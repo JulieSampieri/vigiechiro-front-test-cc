@@ -8,6 +8,9 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+          WEBDAV_USERNAME: ${{ secrets.WEBDAV_USERNAME }}
+          WEBDAV_PASSWORD: ${{ secrets.WEBDAV_PASSWORD }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -24,6 +27,4 @@ jobs:
           duck --username ${{ secrets.WEBDAV_USERNAME }} --password ${{ secrets.WEBDAV_PASSWORD }} \
           -q put ./app/ https://vigiechiro-dev.in2p3.fr/_webdav/app
 
-        env:
-          WEBDAV_USERNAME: ${{ secrets.WEBDAV_USERNAME }}
-          WEBDAV_PASSWORD: ${{ secrets.WEBDAV_PASSWORD }}
+        
