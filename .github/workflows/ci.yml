@@ -17,10 +17,7 @@ jobs:
 
       - name: Install Cyberduck CLI
         run: |
-          wget https://update.cyberduck.io/cli/cyberduck-cli-latest.zip
-          unzip cyberduck-cli-latest.zip
-          chmod +x duck
-          sudo mv duck /usr/local/bin/
+          choco install duck -y
 
       - name: Upload files
         run: |
