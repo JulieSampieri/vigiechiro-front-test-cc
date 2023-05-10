@@ -1,0 +1,29 @@
+name: Upload files to WebDAV
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install Cyberduck CLI
+        run: |
+          wget https://update.cyberduck.io/cli/cyberduck-cli-latest.zip
+          unzip cyberduck-cli-latest.zip
+          chmod +x duck
+          sudo mv duck /usr/local/bin/
+
+      - name: Upload files
+        run: |
+          duck --username ${{ secrets.WEBDAV_USERNAME }} --password ${{ secrets.WEBDAV_PASSWORD }} \
+          -q put ./app/ vigiechiro-dev.in2p3.fr/_webdav
+
+        env:
+          WEBDAV_USERNAME: ${{ secrets.WEBDAV_USERNAME }}
+          WEBDAV_PASSWORD: ${{ secrets.WEBDAV_PASSWORD }}
