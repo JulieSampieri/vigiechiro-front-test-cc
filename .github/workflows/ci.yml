@@ -17,7 +17,8 @@ jobs:
 
       - name: Install Cyberduck CLI
         run: |
-          choco install duck -y
+          sudo apt-get update
+          sudo apt-get install duck -y
 
       - name: Upload files
         run: |
