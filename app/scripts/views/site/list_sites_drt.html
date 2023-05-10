@@ -1,0 +1,27 @@
+<div class="container">
+  <div ng-if="sites.length != 0">
+    <div class="page-header">
+        <h3>Les sites</h3>
+    </div>
+
+    <list-resource-directive resource-backend="resourceBackend">
+      <a href="#/sites/{{resource._id}}">
+        <span>{{resource.titre}}</span>
+        <span class="pull-right" style="white-space: nowrap">
+          <span class="label label-success"
+                ng-show="resource.observateur._id == user._id">
+            Propriétaire
+          </span>
+          <span class="label label-primary"
+                ng-show="resource.observateur._id != user._id">
+            {{ resource.observateur.pseudo }}
+          </span>
+          &nbsp;
+          <span class="label label-default" ng-show="resource.verrouille">
+            Verrouillé
+          </span>
+        </span>
+      </a>
+    </list-resource-directive>
+  </div>
+</div>

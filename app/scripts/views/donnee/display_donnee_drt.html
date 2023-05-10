@@ -1,0 +1,165 @@
+<div>
+  <div>
+    <b>{{ donnee.titre }}</b>
+
+    <a class="btn btn-default"
+       ng-click="CopyToClipboard(donnee.titre)">
+      Copier
+    </a>
+
+    <a class="btn btn-default" ng-click="editDonnee()">Commenter</a>
+  </div>
+  <div class="label label-success" ng-show="copySuccess">
+    Titre copié avec succès
+  </div>
+
+  <div>
+    <p>{{ donnee.commentaire }}</p>
+    <p>{{ donnee.probleme }}</p>
+  </div>
+
+  <div class="table-responsive" ng-show="donnee.observations">
+    <table class="table table-striped table-condensed">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Taxon<br>Tadarida</th>
+          <th>Probabilité</th>
+          <th>Taxon<br>observateur</th>
+          <th>Confiance<br>observateur</th>
+          <th>Taxon<br>validateur</th>
+          <th>Confiance<br>validateur</th>
+          <th>FreqM</th>
+          <th>TDeb</th>
+          <th>TFin</th>
+        </tr>
+      </thead>
+
+      <tbody ng-repeat="observation in donnee.observations">
+        <tr ng-show="patchError[observation.index] || patchSuccess[observation.index]"><td colspan="12">
+          <div class="label label-success" ng-show="patchSuccess[observation.index]">
+            La donnée a bien été enregistrée.
+          </div>
+          <div class="label label-danger" ng-show="patchError[observation.index]">
+            Echec de l'enregistrement de la donnée. Le taxon et la confiance sont obligatoires.
+          </div>
+        </td></tr>
+        <tr>
+          <td class="btn" data-toggle="collapse"
+              data-target="#{{donnee.titre}}-{{observation.index}}">
+            <span class="glyphicon glyphicon-collapse-down">
+            </span>
+          </td>
+          <td>{{ observation.tadarida_taxon.libelle_court }}</td>
+          <td>{{ observation.tadarida_probabilite }}</td>
+          <!-- Taxon observateur -->
+          <td>
+            <div class="input-group input-group-sm">
+              <ui-select ng-model="observation.observateur_taxon"
+                         theme="bootstrap"
+                         ng-disabled="!isObservateur"
+                         append-to-body>
+                <ui-select-match>{{$select.selected.libelle_court}}</ui-select-match>
+                <ui-select-choices repeat="taxon._id as taxon in taxons | filter: $select.search">
+                  {{taxon.libelle_court}}
+                </ui-select-choices>
+              </ui-select>
+            </div>
+          </td>
+          <!-- Confiance observateur -->
+          <td>
+            <div class="input-group input-group-sm">
+              <select class="form-control"
+                      ng-model="observation.observateur_probabilite"
+                      ng-disabled="!isObservateur">
+                <option value="SUR">Sûr</option>
+                <option value="PROBABLE">Probable</option>
+                <option value="POSSIBLE">Possible</option>
+              </select>
+              <a class="input-group-addon" href=""
+                 ng-click="patchObservateur(observation.index)" ng-show="true">OK</a>
+            </div>
+          </td>
+          <!-- Taxon validateur -->
+          <td>
+            <div class="input-group input-group-sm">
+              <ui-select ng-model="observation.validateur_taxon"
+                         theme="bootstrap"
+                         ng-disabled="!isValidateur"
+                         append-to-body>
+                <ui-select-match>{{$select.selected.libelle_court}}</ui-select-match>
+                <ui-select-choices repeat="taxon._id as taxon in taxons | filter: $select.search">
+                  {{taxon.libelle_court}}
+                </ui-select-choices>
+              </ui-select>
+            </div>
+          </td>
+          <!-- Confiance validateur -->
+          <td>
+            <div class="input-group input-group-sm">
+              <select class="form-control"
+                      ng-model="observation.validateur_probabilite"
+                      ng-disabled="!isValidateur">
+                <option value="SUR">Sûr</option>
+                <option value="PROBABLE">Probable</option>
+                <option value="POSSIBLE">Possible</option>
+              </select>
+              <a class="input-group-addon" href=""
+                 ng-click="patchValidateur(observation.index)" ng-show="true">OK</a>
+            </div>
+          </td>
+          <td>{{observation.frequence_mediane}}</td>
+          <td>{{observation.temps_debut}}</td>
+          <td>{{observation.temps_fin}}</td>
+        </tr>
+        <tr class="collapse" id="{{donnee.titre}}-{{observation.index}}"><td colspan="12">
+          <p><b>Autre taxon Tadarida :</b></p>
+          <div ng-repeat="autre in observation.tadarida_taxon_autre"
+               ng-show="autre.probabilite >= observation.tadarida_probabilite/2.1">
+            {{ autre.taxon.libelle_long }} : {{autre.probabilite }}
+          </div>
+
+          <p><b>Messages :</b></p>
+          <table class="table table-bordered"
+                 ng-show="observation.messages.length">
+            <tr ng-repeat="message in observation.messages">
+              <td class="">
+                Auteur :
+                <p><b>{{ message.auteur.pseudo }}</b></p>
+                Date :
+                <p><b>{{ message.date | xinDate: 'short' }}</b></p>
+              </td>
+              <td class="">
+                <p><u>Message</u> :</p>
+                <span ng-bind-html="message.message"></span>
+              </td>
+            </tr>
+          </table>
+          <div ng-show="!observation.messages || observation.messages.length == 0">
+            Pas de message pour le moment.
+          </div>
+
+          <div ng-show="putMessageError[observation.index] || putMessageSuccess[observation.index]">
+            <div class="label label-success" ng-show="putMessageSuccess[observation.index]">
+              Le message a bien été enregistré.
+            </div>
+            <div class="label label-danger" ng-show="putMessageError[observation.index]">
+              Echec de l'enregistrement du message.
+            </div>
+          </div>
+
+          <div class="form-group input-group">
+            <text-angular ng-model="newPost"></text-angular>
+          <div>
+          <a class="btn btn-default" href="" ng-click="addPost(observation.index, newPost)">
+            Ajouter un message
+          </a>
+        </td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div ng-show="!donnee.observations">
+    Pas d'observation pour le moment.
+  </div>
+</div>

@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="page-header">
+    <h3>{{ title }}</h3>
+    <a href="#/sites{{ swap.value }}"><h5>{{ swap.title }}</h5></a>
+  </div>
+
+  <div class="list-group">
+    <div class="row">
+      <div class="col-xs-8">
+          <label for="search">Filtre :</label>
+          <input ng-model="filterField" class="form-control search-field" placeholder="texte">
+      </div>
+      <div class="col-xs-4">
+          <label for="search">Nb de Résultats par page :</label>
+          <input type="number" class="form-control max-results-field" ng-model="lookup.max_results">
+      </div>
+    </div>
+  </div>
+
+  <list-resource-directive resource-backend="resourceBackend" lookup="lookup">
+    <a ng-href='#/sites/{{resource._id}}'>
+      {{ resource.titre }}
+      <span class="pull-right" style="white-space: nowrap">
+        <span class="label label-success"
+              ng-show="resource.observateur._id == user._id">
+          Propriétaire
+        </span>
+        <span class="label label-primary"
+              ng-show="resource.observateur._id != user._id">
+          {{ resource.observateur.pseudo }}
+        </span>
+        &nbsp;
+        <span class="label label-default" ng-show="resource.verrouille">
+          Verrouillé
+        </span>
+      </span>
+    </a>
+  </list-resource-directive>
+</div>

@@ -1,0 +1,127 @@
+<div ng-if="actualite.action == 'INSCRIPTION_PROTOCOLE'">
+  {{actualite._updated | xinDate: 'medium'}} :
+
+  <div ng-if="!actualite.date_validation && !actualite.date_refus">
+    <span ng-if="actualite.sujet._id == user._id">
+      Vous vous êtes
+    </span>
+    <span ng-if="actualite.sujet._id != user._id">
+      <a href="#/utilisateurs/{{actualite.sujet._id}}">
+        L'utilisateur {{ actualite.sujet.pseudo }}
+      </a>
+      s'est
+    </span>
+    incrit au protocole
+    <a href="#/protocoles/{{actualite.protocole._id}}">
+      {{ actualite.protocole.titre }}.
+    </a>
+    <div ng-if="isAdmin">
+      <a class="btn btn-primary" ng-click="validInscription(true)">Valider</a>
+      <a class="btn btn-danger" ng-click="validInscription(false)">Refuser</a>
+    </div>
+  </div>
+
+  <div ng-if="actualite.date_validation">
+    <span ng-if="actualite.sujet._id == user._id">
+      Votre inscription
+    </span>
+    <span ng-if="actualite.sujet._id != user._id">
+      L'inscription de
+      <a href="#/utilisateurs/{{actualite.sujet._id}}">
+        l'utilisateur {{ actualite.sujet.pseudo }}
+      </a>
+    </span>
+    au protocole
+    <a href="#/protocoles/{{actualite.protocole._id}}">
+      {{ actualite.protocole.titre }}
+    </a>
+    a été validée.
+  </div>
+
+  <div ng-if="actualite.date_refus">
+    <span ng-if="actualite.sujet._id == user._id">
+      Votre inscription
+    </span>
+    <span ng-if="actualite.sujet._id != user._id">
+      L'inscription de
+      <a href="#/utilisateurs/{{actualite.sujet._id}}">
+        l'utilisateur {{ actualite.sujet.pseudo }}
+      </a>
+    </span>
+    au protocole
+    <a href="#/protocoles/{{actualite.protocole._id}}">
+      {{ actualite.protocole.titre }}
+    </a>
+    a été refusée.
+  </div>
+</div>
+
+
+<div ng-if="actualite.action == 'NOUVEAU_SITE'">
+  {{actualite._updated | xinDate: 'medium'}} :
+
+  <div ng-if="!actualite.date_validation">
+    <span ng-if="actualite.sujet._id == user._id">
+      Vous avez
+    </span>
+    <span ng-if="actualite.sujet._id != user._id">
+      <a href="#/utilisateurs/{{actualite.sujet._id}}">
+        L'utilisateur {{ actualite.sujet.pseudo }}
+      </a>
+      a
+    </span>
+    créé le site
+    <a href="#/sites/{{actualite.site._id}}">
+      {{ actualite.site.titre }}.
+    </a>
+  </div>
+
+  <div ng-if="actualite.date_validation">
+    <span ng-if="actualite.sujet._id == user._id">
+      Votre site
+      <a href="#/sites/{{actualite.site._id}}">
+        {{ actualite.site.titre }}
+      </a>
+    </span>
+    <span ng-if="actualite.sujet._id != user._id">
+      Le site
+      <a href="#/sites/{{actualite.site._id}}">
+        {{ actualite.site.titre }}
+      </a>
+      de
+      <a href="#/utilisateurs/{{actualite.sujet._id}}">
+        l'utilisateur {{ actualite.sujet.pseudo }}
+      </a>
+    </span>
+    a été verrouillé.
+  </div>
+</div>
+
+
+<div ng-if="actualite.action == 'NOUVELLE_PARTICIPATION'">
+  {{actualite._updated | xinDate: 'medium'}} :
+  <br>
+  <span ng-if="actualite.sujet._id == user._id">
+    Vous avez créé une
+    <a href="#/participations/{{actualite.participation._id}}">
+      participation
+    </a>
+    pour le site
+    <a href="#/sites/{{actualite.site._id}}">
+      {{actualite.site.titre}}.
+    </a>
+  </span>
+  <span ng-if="actualite.sujet._id != user._id">
+    <a href="#/utilisateurs/{{actualite.sujet._id}}">
+      L'utilisateur {{ actualite.sujet.pseudo }}
+    </a>
+    a créé une
+    <a href="#/participations/{{actualite.participation._id}}">
+      participation
+    </a>.
+    pour le site
+    <a href="#/sites/{{actualite.site._id}}">
+      {{actualite.site.titre}}.
+    </a>
+  </span>
+</div>

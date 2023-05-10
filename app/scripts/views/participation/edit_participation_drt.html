@@ -1,0 +1,374 @@
+<div class="panel-body">
+  <div class="alert alert-danger" ng-show="participation._errors.participation">
+    <span class="glyphicon glyphicon-exclamation-sign"></span> {{participation._errors.participation}}
+  </div>
+
+  <date-text-input-directive label="'Date de début'"
+                             model="participation.date_debut"
+                             error="participation._errors.date_debut"
+                             today>
+  </date-text-input-directive>
+
+  <date-text-input-directive label="'Date de fin'"
+                             model="participation.date_fin"
+                             error="participation._errors.date_fin">
+  </date-text-input-directive>
+
+  <div class="form-group" ng-class="{'has-error': participationForm.temperature_debut.$invalid && !participationForm.$pristine}">
+    <div class="input-group">
+      <label class="input-group-addon" for="meteo.temperature_debut">
+        Température au début (en °C)
+      </label>
+      <input type="number" class="form-control" id="meteo.temperature_debut" name="temperature_debut"
+        ng-model="participation.meteo.temperature_debut" ng-disabled="readOnly" min="-20" max="40">
+    </div>
+    <span ng-show="participationForm.temperature_debut.$error.max || participationForm.temperature_debut.$error.min || participationForm.temperature_debut.$error.number"
+          class="help-block has-error">La température doit être comprise en -20°C et +40°C</span>
+  </div>
+
+  <div class="form-group" ng-class="{'has-error': participationForm.temperature_fin.$invalid && !participationForm.$pristine}">
+    <div class="input-group">
+      <label class="input-group-addon" for="meteo.temperature_fin">
+        Température à la fin (en °C)
+      </label>
+      <input type="number" class="form-control" id="meteo.temperature_fin" name="temperature_fin"
+        ng-model="participation.meteo.temperature_fin" ng-disabled="readOnly" min="-20" max="40">
+    </div>
+    <span ng-show="participationForm.temperature_fin.$error.max || participationForm.temperature_fin.$error.min || participationForm.temperature_fin.$error.number"
+          class="help-block has-error">La température doit être comprise en -20°C et +40°C</span>
+  </div>
+
+  <div class="input-group form-group">
+    <span class="input-group-addon">Vent</span>
+    <select class="form-control" name="vent"
+      ng-model="participation.meteo.vent"
+      ng-disabled="readOnly">
+      <option value="NUL">nul</option>
+      <option value="FAIBLE">faible</option>
+      <option value="MOYEN">moyen</option>
+      <option value="FORT">fort</option>
+    </select>
+  </div>
+
+  <div class="input-group form-group">
+    <span class="input-group-addon">Couverture</span>
+    <select class="form-control" name="couverture"
+      ng-model="participation.meteo.couverture"
+      ng-disabled="readOnly">
+      <option value="0-25">0-25</option>
+      <option value="25-50">25-50</option>
+      <option value="50-75">50-75</option>
+      <option value="75-100">75-100</option>
+    </select>
+  </div>
+
+  <div class="form-group" ng-class="{'has-error': participationForm.commentaire.$invalid && !participationForm.$pristine}">
+    <textarea rows="3" class="form-control" id="commentaire" name="commentaire"
+              ng-model="participation.commentaire" ng-disabled="readOnly"
+              placeholder="Commentaire"></textarea>
+  </div>
+
+  <div class="form-group" ng-if="typeSite == 'POINT_FIXE'">
+    <div class="input-group">
+      <label class="input-group-addon">
+        Point du site
+      </label>
+      <select class="form-control"
+              ng-model="participation.point" ng-disabled="readOnly">
+        <option ng-repeat="locality in localities" value="{{locality}}">
+          {{locality}}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group"
+    ng-class="{'has-error': participationForm.configuration.detecteur_enregistreur_numero_serie.$invalid && !participationForm.$pristine}"
+    ng-if="true">
+    <div class="input-group">
+      <label class="input-group-addon" for="configuration.detecteur_enregistreur_numero_serie">
+        Numéro de série du détecteur enregistreur
+      </label>
+      <input type="text" class="form-control"
+        id="configuration.detecteur_enregistreur_numero_serie"
+        name="detecteur_enregistreur_numero_serie"
+        ng-model="participation.configuration.detecteur_enregistreur_numero_serie" ng-disabled="readOnly">
+    </div>
+  </div>
+
+  <div class="form-group"
+    ng-class="{'has-error': participationForm.configuration.detecteur_enregistreur_type.$invalid && !participationForm.$pristine}"
+    ng-if="true">
+    <div class="input-group">
+      <label class="input-group-addon" for="configuration.detecteur_enregistreur_type">
+        Type du détecteur enregistreur
+      </label>
+      <select class="form-control"
+              id="configuration.detecteur_enregistreur_type"
+              name="detecteur_enregistreur_type"
+              ng-model="participation.configuration.detecteur_enregistreur_type"
+              ng-disabled="readOnly">
+        <option value=""></option>
+        <option value="Anabat Chorus">Anabat Chorus</option>
+        <option value="Anabat Swift">Anabat Swift</option>
+        <option value="Anabat Walkabout">Anabat Walkabout</option>
+        <option value="Audiomoth">Audiomoth</option>
+        <option value="Batcorder">Batcorder</option>
+        <option value="Batlogger A">Batlogger A</option>
+        <option value="Batlogger S2">Batlogger S2</option>
+        <option value="Batlogger WE">Batlogger WE</option>
+        <option value="Batmode">Batmode</option>
+        <option value="Cameleo">Cameleo</option>
+        <option value="D240X + Autre enregistreur">D240X + Autre enregistreur</option>
+        <option value="D240X + Edirol R01">D240X + Edirol R01</option>
+        <option value="D240X + Edirol R09">D240X + Edirol R09</option>
+        <option value="D240X + Tascam DR05">D240X + Tascam DR05</option>
+        <option value="D240X + Zoom H2">D240X + Zoom H2</option>
+        <option value="D500">D500</option>
+        <option value="EM3">EM3</option>
+        <option value="EM3+">EM3+</option>
+        <option value="Echo Meter Touch">Echo Meter Touch</option>
+        <option value="Echo Meter Touch 2">Echo Meter Touch 2</option>
+        <option value="Echo Meter Touch 2 Pro">Echo Meter Touch 2 Pro</option>
+        <option value="Lunabat">Lunabat</option>
+        <option value="M500 + BatRecorder">M500 + BatRecorder</option>
+        <option value="M500 + Soundchaser">M500 + Soundchaser</option>
+        <option value="M500 + Syrinx">M500 + Syrinx</option>
+        <option value="M500 + autre logiciel">M500 + autre logiciel</option>
+        <option value="PassiveRecorder">PassiveRecorder</option>
+        <option value="PeerSonic RPA3">PeerSonic RPA3</option>
+        <option value="SM mini">SM mini</option>
+        <option value="SM2BAT">SM2BAT</option>
+        <option value="SM2BAT+">SM2BAT+</option>
+        <option value="SM3">SM3</option>
+        <option value="SM4">SM4</option>
+        <option value="Tranquility Transect + Autre enregistreur">Tranquility Transect + Autre enregistreur</option>
+        <option value="Tranquility Transect + Edirol R01">Tranquility Transect + Edirol R01</option>
+        <option value="Tranquility Transect + Edirol R09">Tranquility Transect + Edirol R09</option>
+        <option value="Tranquility Transect + Tascam DR05">Tranquility Transect + Tascam DR05</option>
+        <option value="Tranquility Transect + Zoom H2">Tranquility Transect + Zoom H2</option>
+        <option value="Ultramic200k + Autre logiciel">Ultramic200k + Autre logiciel</option>
+        <option value="Ultramic200k + BatRecorder">Ultramic200k + BatRecorder</option>
+        <option value="Ultramic200k + Soundchaser">Ultramic200k + Soundchaser</option>
+        <option value="Ultramic200k + Syrinx">Ultramic200k + Syrinx</option>
+        <option value="Ultramic250k + Autre logiciel">Ultramic250k + Autre logiciel</option>
+        <option value="Ultramic250k + BatRecorder">Ultramic250k + BatRecorder</option>
+        <option value="Ultramic250k + Soundchaser">Ultramic250k + Soundchaser</option>
+        <option value="Ultramic250k + Syrinx">Ultramic250k + Syrinx</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group"
+    ng-class="{'has-error': participationForm.configuration.micro_numero_serie.$invalid && !participationForm.$pristine}"
+    ng-if="typeSite == 'ROUTIER' || typeSite == 'CARRE'">
+    <div class="input-group">
+      <label class="input-group-addon" for="configuration.micro_numero_serie">
+        Numéro de série du micro
+      </label>
+      <input type="text" class="form-control"
+        id="configuration.micro_numero_serie"
+        name="micro_numero_serie"
+        ng-model="participation.configuration.micro_numero_serie" ng-disabled="readOnly">
+    </div>
+  </div>
+
+  <div class="form-group"
+    ng-class="{'has-error': participationForm.configuration.micro_type.$invalid && !participationForm.$pristine}"
+    ng-if="typeSite == 'ROUTIER' || typeSite == 'CARRE'">
+    <div class="input-group">
+      <label class="input-group-addon" for="configuration.micro_type">
+        Type du micro
+      </label>
+      <select class="form-control"
+              id="configuration.micro_type"
+              name="micro_type"
+              ng-model="participation.configuration.micro_type"
+              ng-disabled="readOnly">
+        <option value="Autre micro externe">Autre micro externe</option>
+        <option value="BIO-SM2-US">BIO-SM2-US</option>
+        <option value="ICS">ICS</option>
+        <option value="ICS avec coque de protection">ICS avec coque de protection</option>
+        <option value="Micro externe avec cornet">Micro externe avec cornet</option>
+        <option value="Micro externe sans cornet">Micro externe sans cornet</option>
+        <option value="Micro interne">Micro interne</option>
+        <option value="SMM-U1">SMM-U1</option>
+        <option value="SMM-U2">SMM-U2</option>
+        <option value="SMX-U1">SMX-U1</option>
+        <option value="SMX-US">SMX-US</option>
+        <option value="SMX-UT">SMX-UT</option>
+        <option value="SPU">SPU</option>
+        <option value="SPU avec coque de protection">SPU avec coque de protection</option>
+        <option value="UM12">UM12</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="input-group form-group"
+       ng-class="{'has-error': participationForm.configuration.micro0_position.$invalid && !participationForm.$pristine}"
+       ng-if="typeSite == 'POINT_FIXE'">
+    <span class="input-group-addon">Position micro gauche</span>
+    <select class="form-control" name="micro0_position"
+      ng-model="participation.configuration.micro0_position"
+      ng-disabled="readOnly">
+      <option value="SOL">Sol</option>
+      <option value="CANOPEE">Canopée</option>
+    </select>
+  </div>
+
+  <div class="form-group"
+    ng-class="{'has-error': participationForm.configuration.micro0_numero_serie.$invalid && !participationForm.$pristine}"
+    ng-if="typeSite == 'POINT_FIXE'">
+    <div class="input-group">
+      <label class="input-group-addon" for="configuration.micro0_numero_serie">
+        Numéro de série du micro gauche
+      </label>
+      <input type="text" class="form-control" id="configuration.micro0_numero_serie"
+        name="micro0_numero_serie"
+        ng-model="participation.configuration.micro0_numero_serie" ng-disabled="readOnly">
+    </div>
+  </div>
+
+  <div class="form-group"
+    ng-class="{'has-error': participationForm.configuration.micro0_type.$invalid && !participationForm.$pristine}"
+    ng-if="typeSite == 'POINT_FIXE'">
+    <div class="input-group">
+      <label class="input-group-addon" for="configuration.micro0_type">
+        Type du micro gauche
+      </label>
+      <select class="form-control" id="configuration.micro0_type"
+              name="micro0_type"
+              ng-model="participation.configuration.micro0_type"
+              ng-disabled="readOnly">
+        <option value="Autre micro externe">Autre micro externe</option>
+        <option value="BIO-SM2-US">BIO-SM2-US</option>
+        <option value="ICS">ICS</option>
+        <option value="ICS avec coque de protection">ICS avec coque de protection</option>
+        <option value="Micro externe avec cornet">Micro externe avec cornet</option>
+        <option value="Micro externe sans cornet">Micro externe sans cornet</option>
+        <option value="Micro interne">Micro interne</option>
+        <option value="SMM-U1">SMM-U1</option>
+        <option value="SMM-U2">SMM-U2</option>
+        <option value="SMX-U1">SMX-U1</option>
+        <option value="SMX-US">SMX-US</option>
+        <option value="SMX-UT">SMX-UT</option>
+        <option value="SPU">SPU</option>
+        <option value="SPU avec coque de protection">SPU avec coque de protection</option>
+        <option value="UM12">UM12</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group"
+    ng-class="{'has-error': participationForm.configuration.micro0_hauteur.$invalid && !participationForm.$pristine}"
+    ng-if="typeSite == 'POINT_FIXE'">
+    <div class="input-group">
+      <label class="input-group-addon" for="configuration.micro0_hauteur">
+        Hauteur du micro gauche (en m)
+      </label>
+      <input type="text" class="form-control" id="configuration.micro0_hauteur"
+        name="micro0_hauteur"
+        ng-model="participation.configuration.micro0_hauteur" ng-disabled="readOnly">
+    </div>
+  </div>
+
+  <div class="input-group form-group"
+    ng-class="{'has-error': participationForm.configuration.micro1_position.$invalid && !participationForm.$pristine}"
+    ng-if="typeSite == 'POINT_FIXE'">
+    <span class="input-group-addon">Position micro droit</span>
+    <select class="form-control" name="micro1_position"
+      ng-model="participation.configuration.micro1_position"
+      ng-disabled="readOnly">
+      <option value="SOL">Sol</option>
+      <option value="CANOPEE">Canopée</option>
+    </select>
+  </div>
+
+  <div class="form-group"
+    ng-class="{'has-error': participationForm.configuration.micro1_numero_serie.$invalid && !participationForm.$pristine}"
+    ng-if="typeSite == 'POINT_FIXE'">
+    <div class="input-group">
+      <label class="input-group-addon" for="configuration.micro1_numero_serie">
+        Numéro de série du micro droit
+      </label>
+      <input type="text" class="form-control" id="configuration.micro1_numero_serie"
+        name="micro1_numero_serie"
+        ng-model="participation.configuration.micro1_numero_serie" ng-disabled="readOnly">
+    </div>
+  </div>
+
+  <div class="form-group"
+    ng-class="{'has-error': participationForm.configuration.micro1_type.$invalid && !participationForm.$pristine}"
+    ng-if="typeSite == 'POINT_FIXE'">
+    <div class="input-group">
+      <label class="input-group-addon" for="configuration.micro1_type">
+        Type du micro droit
+      </label>
+      <select class="form-control" id="configuration.micro1_type"
+              name="micro1_type"
+              ng-model="participation.configuration.micro1_type"
+              ng-disabled="readOnly">
+        <option value="Autre micro externe">Autre micro externe</option>
+        <option value="BIO-SM2-US">BIO-SM2-US</option>
+        <option value="ICS">ICS</option>
+        <option value="ICS avec coque de protection">ICS avec coque de protection</option>
+        <option value="Micro externe avec cornet">Micro externe avec cornet</option>
+        <option value="Micro externe sans cornet">Micro externe sans cornet</option>
+        <option value="Micro interne">Micro interne</option>
+        <option value="SMM-U1">SMM-U1</option>
+        <option value="SMM-U2">SMM-U2</option>
+        <option value="SMX-U1">SMX-U1</option>
+        <option value="SMX-US">SMX-US</option>
+        <option value="SMX-UT">SMX-UT</option>
+        <option value="SPU">SPU</option>
+        <option value="SPU avec coque de protection">SPU avec coque de protection</option>
+        <option value="UM12">UM12</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group"
+    ng-class="{'has-error': participationForm.configuration.micro1_hauteur.$invalid && !participationForm.$pristine}"
+    ng-if="typeSite == 'POINT_FIXE'">
+    <div class="input-group">
+      <label class="input-group-addon" for="configuration.micro1_hauteur">
+        Hauteur du micro droit (en m)
+      </label>
+      <input type="text" class="form-control" id="configuration.micro1_hauteur"
+        name="micro1_hauteur"
+        ng-model="participation.configuration.micro1_hauteur" ng-disabled="readOnly">
+    </div>
+  </div>
+
+  <div class="input-group form-group"
+       ng-class="{'has-error': participationForm.configuration.canal_expansion_temps.$invalid && !participationForm.$pristine}"
+       ng-if="typeSite == 'ROUTIER' || typeSite == 'CARRE'">
+    <span class="input-group-addon">Canal en expansion de temps</span>
+    <select class="form-control" name="canal_expansion_temps"
+      ng-model="participation.configuration.canal_expansion_temps"
+      ng-disabled="readOnly">
+      <option value=""></option>
+      <option value="GAUCHE">Gauche</option>
+      <option value="DROITE">Droit</option>
+      <option value="ABSENT">Absent</option>
+    </select>
+  </div>
+
+  <div class="input-group form-group"
+       ng-class="{'has-error': participationForm.configuration.canal_enregistrement_direct.$invalid && !participationForm.$pristine}"
+       ng-if="typeSite == 'ROUTIER' || typeSite == 'CARRE'">
+    <span class="input-group-addon">Canal en enregistrement direct</span>
+    <select class="form-control" name="canal_enregistrement_direct"
+      ng-model="participation.configuration.canal_enregistrement_direct"
+      ng-disabled="readOnly">
+      <option value=""></option>
+      <option value="GAUCHE">Gauche</option>
+      <option value="DROITE">Droit</option>
+      <option value="ABSENT">Absent</option>
+    </select>
+    <span class="help-block"
+      ng-show="submitted && canal_enregistrement_direct_error">
+      Le canal en expansion de temps et le canal en enregistrement direct doivent être tous les 2 vides ou avoir une valeur (Gauche, Droit ou Absent).
+    </span>
+  </div>
+</div>

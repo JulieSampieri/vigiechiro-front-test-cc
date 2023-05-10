@@ -1,0 +1,75 @@
+<div class="container">
+
+  <form class="simple-form" novalidate name="protocoleForm"
+        ng-submit="saveProtocole()">
+
+    <div class="input-group form-group">
+      <label class="input-group-addon" for="titre">Titre</label>
+      <input type="text" class="form-control" id="titre" name="titre"
+             ng-model="protocole.titre" required>
+    </div>
+    <span ng-show="submitted && protocoleForm.titre.$error.required"
+          class="help-block">
+      Champ requis
+    </span>
+
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" ng-model="protocole.macro_protocole" ng-value="true"
+               ng-checked="protocole.macro_protocole">
+        Programme
+      </label>
+    </div>
+
+    <div class="input-group form-group">
+      <text-angular ng-model="protocole.description"></text-angular>
+    </div>
+
+    <div ng-show="!protocole.macro_protocole">
+      <div class="input-group form-group">
+        <span class="input-group-addon">Type de site</span>
+        <select class="form-control" ng-model="protocole.type_site">
+          <option value="CARRE">Pédestre</option>
+          <option value="ROUTIER">Routier</option>
+          <option value="POINT_FIXE">Point fixe</option>
+        </select>
+      </div>
+
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" ng-model="protocole.autojoin" ng-value="true"
+                 ng-checked="protocole.autojoin">
+          Inscription&validation automatique de l'utilisateur à l'acceptation de la charte
+        </label>
+      </div>
+
+      <span ng-show="submitted && !protocole.type_site"
+            class="help-block">
+        Champ requis
+      </span>
+
+      <div class="form-group" ng-class="{'has-error': taxons.error && !protocoleForm.$pristine}">
+        <div class="input-group">
+          <label class="input-group-addon" for="protocole_taxon">Taxon</label>
+          <ui-select id="protocole_taxon" name="protocole_taxon"
+                     ng-model="protocole.taxon" theme="bootstrap"
+                     ng-disabled="disabled">
+            <ui-select-match>{{$select.selected.libelle_long}}</ui-select-match>
+            <ui-select-choices repeat="taxon in taxons | filter:$select.search">
+              {{taxon.libelle_long}}
+            </ui-select-choices>
+          </ui-select>
+        </div>
+        <span ng-show="submitted && !protocole.taxon" class="help-block">
+          Champ requis
+        </span>
+      </div>
+    </div>
+
+    <div class="input-group form-group">
+      <input class="save-protocole btn btn-primary" type="submit" value="Sauvegarder"
+             ng-hide="protocoleForm.$pristine">
+    </div>
+
+  </form>
+</div>

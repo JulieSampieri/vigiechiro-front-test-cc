@@ -1,0 +1,30 @@
+<div class="form-group">
+  <div class="input-group">
+    <div class="input-group-addon">
+      <div class="dropdown">
+        <a href="" class="dropdown-toggle"
+           id="dLabel_date_{{date_id}}"
+           data-toggle="dropdown">
+          <i class="fa fa-lg fa-calendar"></i> {{label}}
+        </a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel_date_{{date_id}}">
+          <datetimepicker
+            data-ng-model="model"
+            data-on-set-time="onTimeSet(newDate, oldDate)"
+            data-datetimepicker-config="{
+              startView : 'year',
+              minuteStep: 5}">
+          </datetimepicker>
+        </ul>
+      </div>
+    </div>
+
+    <input type="text" class="form-control" ng-model="textDate" ng-blur="handleInputDate()" />
+    <div class="input-group-addon alert-warning" ng-if="textDate != originTextDate">
+      <i class="fa fa-lg fa-pencil"></i>
+    </div>
+  </div>
+  <div ng-show="error" class="alert alert-danger">
+    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> {{error}}
+  </div>
+</div>
