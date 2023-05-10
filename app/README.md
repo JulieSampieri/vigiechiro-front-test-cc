@@ -10,7 +10,7 @@ Netcat (nc) pour debian
 sudo apt-get install netcat-openbsd
 ```
 
-Curl pou r debian
+Curl pour debian
 ```
 sudo apt-get install curl
 ```
