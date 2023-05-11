@@ -23,5 +23,4 @@ jobs:
 
       - name: Upload files
         run: |
-          duck --version
-          duck upload --verbose ./app/ remote://$WEBDAV_USERNAME:$WEBDAV_PASSWORD@vigiechiro-dev.in2p3.fr/_webdav_/app/
+          duck upload -r ./app/ remote://$WEBDAV_USERNAME:$WEBDAV_PASSWORD@vigiechiro-dev.in2p3.fr/_webdav_/app/
