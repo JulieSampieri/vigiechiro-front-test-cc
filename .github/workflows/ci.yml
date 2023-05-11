@@ -22,6 +22,8 @@ jobs:
 
       - name: Upload files
         run: |
-          duck --username "${{ secrets.WEBDAV_USERNAME }}" --password "${{ secrets.WEBDAV_PASSWORD }}" --upload protocol:/app/ https://vigiechiro-dev.in2p3.fr/_webdav/app/
+          duck --name "${{ secrets.WEBDAV_USERNAME }}" --password "${{ secrets.WEBDAV_PASSWORD }}" -r -q --upload ./app/ https://vigiechiro-dev.in2p3.fr/_webdav/app/
+
+
 
         
