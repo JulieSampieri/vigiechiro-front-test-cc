@@ -23,6 +23,8 @@ jobs:
 
       - name: Upload files
         run: |
-          echo $WEBDAV_USERNAME
-          echo $WEBDAV_PASSWORD
+          echo "WebDAV username: $WEBDAV_USERNAME"
+          echo "WebDAV password: $WEBDAV_PASSWORD"
+          echo "Uploading app directory to server"
           duck upload -r C:/Users/bbees/Documents/GitHub/vigiechiro-front-test-cc/app remote://$WEBDAV_USERNAME:$WEBDAV_PASSWORD@vigiechiro-dev.in2p3.fr/_webdav_/app/
+          echo "Upload complete"
