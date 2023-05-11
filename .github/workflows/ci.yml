@@ -24,4 +24,4 @@ jobs:
       - name: Upload files
         run: |
           duck --version
-          duck -v --upload ./app/ https://user@vigiechiro-dev.in2p3.fr/_webdav_/app/
+          cyberduck-cli upload ./app/ remote://WEBDAV_USERNAME:WEBDAV_PASSWORD@vigiechiro-dev.in2p3.fr/_webdav_/app/
