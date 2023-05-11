@@ -22,4 +22,4 @@ jobs:
 
       - name: Upload files
         run: |
-          duck -v --password "${WEBDAV_PASSWORD}" --upload ./app/ https://user@vigiechiro-dev.in2p3.fr/_webdav_/app/
+          duck -v --key "${WEBDAV_PASSWORD}" --upload ./app/ https://user@vigiechiro-dev.in2p3.fr/_webdav_/app/
