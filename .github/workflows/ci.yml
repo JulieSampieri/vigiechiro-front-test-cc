@@ -26,9 +26,5 @@ jobs:
           echo "WebDAV username: $WEBDAV_USERNAME"
           echo "WebDAV password: $WEBDAV_PASSWORD"
           echo "Uploading app directory to server"
-          duck upload -r C:/Users/bbees/Documents/GitHub/vigiechiro-front-test-cc/app remote://$WEBDAV_USERNAME:$WEBDAV_PASSWORD@vigiechiro-dev.in2p3.fr/_webdav_/app/ > upload.log 2>&1
+          duck --upload protocol:/$WEBDAV_USERNAME:$WEBDAV_PASSWORD@vigiechiro-dev.in2p3.fr/_webdav_/app/ C:/Users/bbees/Documents/GitHub/vigiechiro-front-test-cc/app/
           echo "Upload complete"
-
-      - name: View log file
-        run: |
-          cat upload.log
