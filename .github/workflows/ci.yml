@@ -23,4 +23,6 @@ jobs:
 
       - name: Upload files
         run: |
-          duck upload -r ./app/ remote://$WEBDAV_USERNAME:$WEBDAV_PASSWORD@vigiechiro-dev.in2p3.fr/_webdav_/app/
+          echo $WEBDAV_USERNAME
+          echo $WEBDAV_PASSWORD
+          duck upload -r C:/Users/bbees/Documents/GitHub/vigiechiro-front-test-cc/app remote://$WEBDAV_USERNAME:$WEBDAV_PASSWORD@vigiechiro-dev.in2p3.fr/_webdav_/app/
