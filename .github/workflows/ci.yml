@@ -17,14 +17,15 @@ jobs:
 
       - name: Install Cyberduck CLI
         run: |
-          sudo apt-get update
-          sudo apt-get upgrade
-          sudo apt-get install duck -y
+          sudo apt update
+          sudo apt install yum
+          echo -e "[duck-stable]\nname=duck-stable\nbaseurl=https://repo.cyberduck.io/stable/\$basearch/\nenabled=1\ngpgcheck=0" | sudo tee /etc/yum.repos.d/duck-stable.repo
+          sudo yum install duck
 
       - name: Upload files
         run: |
           echo "WebDAV username: $WEBDAV_USERNAME"
           echo "WebDAV password: $WEBDAV_PASSWORD"
           echo "Uploading app directory to server"
-          duck upload protocol:/$WEBDAV_USERNAME:$WEBDAV_PASSWORD@vigiechiro-dev.in2p3.fr/_webdav_/app/ C:/Users/bbees/Documents/GitHub/vigiechiro-front-test-cc/app/
+          duck --upload protocol:/$WEBDAV_USERNAME:$WEBDAV_PASSWORD@vigiechiro-dev.in2p3.fr/_webdav_/app/ C:/Users/bbees/Documents/GitHub/vigiechiro-front-test-cc/app/
           echo "Upload complete"
