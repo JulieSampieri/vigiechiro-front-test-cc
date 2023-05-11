@@ -9,8 +9,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     env:
-          WEBDAV_USERNAME: ${{ secrets.WEBDAV_USERNAME }}
-          WEBDAV_PASSWORD: ${{ secrets.WEBDAV_PASSWORD }}
+          WEBDAV_USERNAME: "${{ secrets.WEBDAV_USERNAME }}"
+          WEBDAV_PASSWORD: "${{ secrets.WEBDAV_PASSWORD }}"
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
