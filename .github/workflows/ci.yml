@@ -27,5 +27,5 @@ jobs:
           echo "WebDAV username: $WEBDAV_USERNAME"
           echo "WebDAV password: $WEBDAV_PASSWORD"
           echo "Uploading app directory to server"
-          duck --synchronize davs://vigiechiro-dev.in2p3.fr/_webdav_/ ./app/ --username $WEBDAV_USERNAME --password $WEBDAV_PASSWORD
+          duck --upload davs://vigiechiro-dev.in2p3.fr/_webdav_/ ./app/ --username $WEBDAV_USERNAME --password $WEBDAV_PASSWORD
           echo "Upload complete"
