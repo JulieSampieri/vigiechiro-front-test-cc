@@ -21,6 +21,9 @@ jobs:
           sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys FE7097963FEFBE72
           sudo apt-get update
           sudo apt-get install duck
+          echo "test search duck"
+          apt-cache search duck
+          echo "Fin de l installation de Cyberduck CLI"
 
       - name: Upload files
         run: |
