@@ -1,46 +1,47 @@
-<div class="container">
-  <div class="text-center">
-    <div class="page-header text-center">
-      <h3>{{site.titre}}</h3>
+<div class="content">
+  <div class="container">
+    <div class="text-center">
+      <div class="page-header text-center">
+        <h3>{{site.titre}}</h3>
+      </div>
     </div>
-  </div>
 
-  <a class="btn btn-default" href="#/protocoles/{{site.protocole._id}}">
-    Voir le protocole {{ site.protocole.titre }}
-  </a>
+    <a class="btn btn-default" href="#/protocoles/{{site.protocole._id}}" target="_blank">
+      Voir le protocole {{ site.protocole.titre }}
+    </a>
 
-  <a class="btn btn-danger" href="" ng-click="delete()"
-     ng-show="isAdmin">
-    Supprimer le site
-  </a>
+    <a class="btn btn-danger" href="" ng-click="delete()"
+      ng-show="isAdmin">
+      Supprimer le site
+    </a>
 
-  <div class="panel-body">
-    <p>Observateur : <b>{{ site.observateur.pseudo }}</b></p>
-    <display-site-directive site="site" type-site="{{typeSite}}">
-    </display-site-directive>
-  </div>
-
-  <div class="form-group" ng-if="isAdmin || !site.verrouille">
-    <a class="btn btn-primary" href="#/sites/{{site._id}}/edition">Editer</a>
-  </div>
-
-  <div class="panel-body">
-    <div class="page-header">
-      <h3>Mes participations</h3>
+    <div class="panel-body">
+      <p>Observateur : <b>{{ site.observateur.pseudo }}</b></p>
+      <display-site-directive site="site" type-site="{{typeSite}}">
+      </display-site-directive>
     </div>
-    <list-resource-directive resource-backend="participationsResource"
-                             lookup="participationsLookup">
-      <a href="#/participations/{{resource._id}}">
-        Participation du {{ resource.date_debut | xinDate: 'medium' }}
+
+    <div class="form-group" ng-if="isAdmin || (site.observateur._id == userId && !site.verrouille)"> 
+      <a class="btn btn-secondary" href="#/sites/{{site._id}}/edition">Editer</a>
+    </div>
+
+    
+      <div class="page-header">
+        <h3>Participations</h3>
+      </div>
+      <!-- <div class="custom-list btn-onet"> Experimentation style liste -->
+        <list-resource-directive resource-backend="participationsResource" lookup="participationsLookup">
+          <a href="#/participations/{{resource._id}}">
+            Participation du {{ resource.date_debut | xinDate: 'medium' }}
+          </a>
+        </list-resource-directive>
+      <!-- </div> -->
+      <a class="btn btn-primary" href="#/sites/{{site._id}}/nouvelle-participation"
+        ng-disabled="!isProtocoleValid">
+        Nouvelle participation <span ng-if="site.observateur._id != userId">opportuniste</span>
       </a>
-    </list-resource-directive>
-  </div>
-
-  <a class="btn btn-primary" href="#/sites/{{site._id}}/nouvelle-participation"
-     ng-disabled="!isProtocoleValid">
-    Nouvelle participation <span ng-if="site.observateur._id != userId">opportuniste</span>
-  </a>
-  <div ng-if="!isProtocoleValid">
-    Le protocole n'est pas encore validé.
+      <div ng-if="!isProtocoleValid">
+        Le protocole n'est pas encore validé.
+      </div>
   </div>
 </div>

@@ -26,6 +26,18 @@
       })
     }).when('/policy', {
       templateUrl: 'policy.html',
+      no_login: true,
+    }).when('/legal-mentions', { /*page des mentions legal*/
+      templateUrl: 'legal-mentions.html',
+      no_login: true,
+    }).when('/cookies-policy', { /*page d'utilisations des cookies */
+      templateUrl: 'cookies-policy.html',
+      no_login: true,
+    }).when('/terms-of-service', { /*page des conditions generales d'utilisation */
+      templateUrl: 'terms-of-service.html',
+      no_login: true,
+    }).when('/login', { /*page de connexion*/
+      templateUrl: 'login.html',
       no_login: true
     }).when('/403', {
       templateUrl: '403.html',
@@ -42,6 +54,17 @@
       templateUrl: 'navbar.html',
       scope: {},
       link: function($scope, elem, attrs) {
+        var hiddenPages = ['/login', '/policy', '/legal-mentions', '/cookies-policy', '/terms-of-service'];
+
+        $rootScope.$on('$routeChangeSuccess', function(event, currentRoute) {
+          var currentPage = currentRoute.$$route.originalPath;
+          if (hiddenPages.includes(currentPage)) {
+            elem.hide();
+          } else {
+            elem.show();
+          }
+        });
+
         var loadBreadcrumbs;
         loadBreadcrumbs = function(currentRoute) {
           var breadcrumbsDefer;

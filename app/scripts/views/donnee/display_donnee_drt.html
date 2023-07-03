@@ -2,12 +2,12 @@
   <div>
     <b>{{ donnee.titre }}</b>
 
-    <a class="btn btn-default"
+    <a class="btn btn-secondary"
        ng-click="CopyToClipboard(donnee.titre)">
       Copier
     </a>
 
-    <a class="btn btn-default" ng-click="editDonnee()">Commenter</a>
+    <a class="btn btn-secondary" ng-click="editDonnee()">Commenter</a>
   </div>
   <div class="label label-success" ng-show="copySuccess">
     Titre copié avec succès

@@ -1,37 +1,94 @@
-<div class="spinner"
-     ng-show="participationWaiting">
-  <i class="fa fa-5x fa-spinner fa-pulse"></i>
-</div>
-
-<div class="actionbar">
-  <sc-button class="btn btn-success"
-             ng-click="compute()"
-             label="'Lancer la participation'"
-             wait-for-class="fa fa-spinner"
-             cancel-wait-for="computeDone">
-  </sc-button>
-  <a class="btn btn-default"
-     href="#/participations/{{participation._id}}">
-    Voir la participation
-  </a>
-</div>
-
-<div ng-show="computeInfo">
-  <span class="label label-danger"
-        ng-if="computeInfo.error">
-    La demande de relance de la participation a échoué.
-  </span>
-</div>
-
-<div class="panel-body">
-  <div class="text-center">
-    <div class="page-header text-center">
-      <h3>Participation du {{ participation.date_debut | xinDate: 'medium' }} effectuée par {{participation.observateur.pseudo}}</h3>
-    </div>
+<div class="content">
+  <div class="spinner"
+      ng-show="participationWaiting">
+    <i class="fa fa-5x fa-spinner fa-pulse"></i>
   </div>
 
-  <div class="alert alert-warning">Exemple de nom de fichier : {{fileFormatExemple}}</div>
 
-  <upload-file-directive lien-participation="{{participationId}}">
-  </upload-file-directive>
+
+  <div ng-show="computeInfo">
+    <span class="label label-danger"
+          ng-if="computeInfo.error">
+      La demande de relance de la participation a échoué.
+    </span>
+  </div>
+
+  <div class="panel-body">
+    <div class="text-center">
+      <div class="page-header text-center">
+        <h3>Chargement des fichiers pour <br> la participation du {{ participation.date_debut | xinDate: 'medium' }} <br> effectuée par {{participation.observateur.pseudo}} <br> sur le site <br> <b>{{participation.site.titre}}</b> 
+          <span ng-if="participation.point && participation.point != ''"> et le <b>point {{ participation.point }}</b></span> </h3>
+      </div>
+    </div>
+    
+    <h3>1 - Renommer vos enregistrements </h3>
+    <p>Renommer vos enregistrements pour garantir un bon référencement de vos fichiers dans la base de données Vigie-Chiro et leur traitement par Tadarida via le portail web :
+      <ul>
+        <li><a href="https://docs.google.com/presentation/d/152exuXEkBNdMopNFM2nV1eoU00z-HxEuhZzTLVZnb8A/edit?pli=1#slide=id.p" target="_blank">Renommer les fichiers issus de SM2BAT, SM3BAT, SM4BAT, SM mini, Passive Recorder, BatRecorder</a></li>
+        <li><a href="https://docs.google.com/presentation/d/1Ry8dvIlhb12yUjLIlxCmbOi7Q2m-tTCV4_L-sQLQj0w/edit#slide=id.p" target="_blank">Renommer et découper les fichiers issus d’Audiomoth (firmware v1.6 et plus)</a></li>
+        <li><a href="https://docs.google.com/presentation/d/1cUJBaAIsbG_B5nXPr7oKaSGqYApcxdmvkz4I1syhJy0/edit#slide=id.p" target="_blank">Renommer les fichiers issus de Batlogger</a></li>
+        <li> Renommer les fichiers issus de l’Anabat Swift (à venir) </li>
+      </ul>
+      <i>Il est préférable de garder les fichiers issus des différents points dans des dossiers séparés.</i>
+    </p>
+    <hr>
+    <h3>2 - Décompresser ou découper vos fichiers via Kaleidoscope </h3>
+    <p>
+      Pré-traitement indispensable à l’envoi de vos enregistrements sur le portail et leur traitement par Tadarida ! <br><br>
+      <a href="https://docs.google.com/presentation/d/1SlcknLZpedSJx46Cu9I0IQKqhkD8sVRaEqYsk5daIDw/edit#slide=id.p" target="_blank">Tutoriel d’utilisation de Kaleidoscope</a>
+      <br><br><i>Attention, <b>les utilisateurs d’Audiomoth</b> doivent aussi suivre cette étape car les fichiers découpés via Audiomoth Configuration App ne sont pas en expansion de temps x10, probable mise à jour à venir pour s’épargner cette étape mais pour le moment, c’est primordial <br>
+        <br> Attention les réglages sont différents entre les protocoles <b>point fixe</b> (sortie en x10) et <b>routier/pédestre</b> (sortie en x1)</i>
+    </p>
+    <hr>
+
+    <h3>3 - Sélectionner les fichiers à charger</h3>
+
+    <div class="alert alert-warning">Exemple de nom de fichier : {{fileFormatExemple}}</div>
+
+    <p> Vous pouvez sélectionner une liste de <b>fichiers</b> (plus pratique pour des fichiers compressés) ou un <b>répertoire</b> (plus pratique pour les gros volumes de fichiers non compressés) : </p>
+    
+    <upload-file-directive lien-participation="{{participationId}}">
+    </upload-file-directive>
+    <small class="text-muted">Les fichiers sont ignorés s'ils avaient été transmis précédemment.</small>
+    <hr>
+    <h3>4 - Veuillez patienter jusqu'à la fin du chargement des fichiers avant de lancer la participation. </h3>
+    <p>
+      Il est important de vérifier que tous les fichiers sont passés !
+      Si ce n’est pas le cas, vous pouvez reprendre plus tard, mais ne cliquez pas sur "Lancer la participation".
+    </p>
+      <div class="alert alert-warning"> Assurez-vous que les fichiers sélectionnés correspondent au <span ng-if="participation.point && participation.point != ''"> <b>point {{ participation.point }}</b> et au </span>
+      site <b>{{participation.site.titre}}</b> </div>
+      
+      
+  </div>
+
+  
+
+  <div class="actionbar">
+    
+    <a class="btn btn-default"
+       href="#/participations/{{participation._id}}">
+      Voir la participation
+    </a>
+
+    <sc-button class="btn btn-success"
+               ng-click="compute()"
+               label="'Lancer la participation'"
+               wait-for-class="fa fa-spinner"
+               cancel-wait-for="computeDone">
+    </sc-button>
+    
+  </div>
+  
+  <h4> Lenteur du chargement </h4>
+  <p>
+    Si vous ne disposez pas d’une connexion performante, cet envoi des fichiers wave est souvent long (plusieurs heures pour une nuit avec une forte activité), il faut donc souvent planifier ces taches de façon à les lancer quand votre ordinateur est disponible et connecté en permanence (pendant la nuit par exemple).
+    Pour certains d’entre vous, la lenteur est telle qu’il n’est pas raisonnable d’envoyer vos fichiers wave via le web. Pour cela nous fournissons deux tutoriels supplémentaires :
+    <ul>
+      <li><a href="https://docs.google.com/presentation/d/12cf-lh70QYy6W4BL9p8rCdsFd3PQ-ywtwRy4V_MVhfk/edit#slide=id.p" target="_blank"> Pour préalablement compresser vos fichiers waves </a> ce qui multiplie par 3 la rapidité d’upload</li>
+      <li> Si c’est toujours trop lent pour vous,<a href="https://docs.google.com/presentation/d/1gGy8rl0DyD-LnrXmkDJ40Hv8KAb0m353zDHyq67l_n8/edit#slide=id.p" target="_blank"> un autre tutoriel vous permettra d’extraire les paramètres des cris de chauves-souris et autres sauterelles avec le logiciel Tadarida-L </a> et d’envoyer ces paramètres en lieu et place des enregistrements wave. Cela dit l’envoi des fichiers wave reste primordial pour garantir la valeur des données sur le long terme. </li>
+    </ul>
+
+  </p>
+
 </div>

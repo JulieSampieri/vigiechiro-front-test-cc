@@ -1,0 +1,17 @@
+/* style of the popup div appearing on click of "Uploader les fichiers" and "Commenter" (in Liste des données) */
+
+.modal-content p{
+    margin: 10px;
+}
+
+.modal-content{
+    position: fixed;
+    top: 180px;
+}
+
+@media (max-width: 768px) {
+    .modal-content{
+        top: 70px;
+        width: 100%;
+    }
+  }

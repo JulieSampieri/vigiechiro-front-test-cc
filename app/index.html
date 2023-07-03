@@ -9,6 +9,7 @@
     <!-- CDN css-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-bootstrap-datetimepicker/1.1.2/css/datetimepicker.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.4.0/dist/css/bootstrap.min.css">
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
@@ -22,6 +23,18 @@
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/login-style.css">
+    <link rel="stylesheet" href="styles/footer-style.css">
+    <link rel="stylesheet" href="styles/navbar.css">
+    <link rel="stylesheet" href="styles/list-style.css">
+    <link rel="stylesheet" href="styles/fonts.css">
+    <link rel="stylesheet" href="styles/list_protocoles-style.css">
+    <link rel="stylesheet" href="styles/landingPage-style.css">
+    <link rel="stylesheet" href="styles/404-403-style.css">
+    <link rel="stylesheet" href="styles/policy-style.css">
+    <link rel="stylesheet" href="styles/accueil-style.css">
+    <link rel="stylesheet" href="styles/edit_participation_drt-style.css">
+    <link rel="stylesheet" href="styles/modal-style.css">
     <!-- endbuild -->
   </head>
 
@@ -44,17 +57,93 @@
       <div class="clearfix"></div>
       <br/>
     </content-directive>
-  <footer class="footer">
-    <div class="container">
-      <a href="http://scille.eu" target="_blank">
-        <img src="images/logo-scille.png" width="20">&nbsp;Scille
-      </a>
-      vigiechiro {version}
-      <a href="/#/policy">
-        politique des données
-      </a>
-    </div>
-  </footer>
+
+    <!----------------------- FOOTER ------------------------>
+
+    <footer class="footer">
+      <div class="container">
+        <!--
+        <div class="footer-menu">
+          <ul>
+            <li><a href="#/">Accueil</a></li>
+            <li><a href="#/participations/mes-participations">Participations</a></li>
+            <li><a href="#/sites/mes-sites">Sites</a></li>
+            <li><a href="#/protocoles/mes-protocoles">Protocoles</a></li>
+            <li><a href="#/taxons">Taxons</a></li>
+            <li><a href="#/utilisateurs">Utilisateurs</a></li>
+            <li><a class="button-profile" href="#/profil">Profil</a></li>
+          </ul>
+        </div>
+        -->
+        
+        <p>
+          
+          <a href="https://www.mnhn.fr/fr" target="_blank">
+            <img src="images/logo-museum.webp" width="120">
+          </a>
+          &nbsp;&nbsp;&nbsp;
+          <a href="https://www.cnrs.fr/fr" target="_blank">
+            <img src="images/logo-cnrs.png" width="120">
+          </a>
+          &nbsp;&nbsp;&nbsp;
+          <a href="http://cesco.mnhn.fr/fr" target="_blank">
+            <img src="images/logo-cesco.png" width="180">
+          </a>
+          &nbsp;&nbsp;&nbsp;
+          <a href="http://bbees.mnhn.fr/fr" target="_blank">
+            <img src="images/logo-bbees.png" width="120">
+          </a>
+          &nbsp;&nbsp;&nbsp;
+          <a href="http://scille.eu" target="_blank">
+            <img src="images/logo-scille.png" width="80"> 
+          </a>
+        </p>
+        <p>
+          En cas de demande d'assistance, utilisez en priorité <a class="light-link" href="https://vigie-chiro.forumactif.com/" target="_blank"> <b>le forum.</b></a>
+        </p>
+        
+
+        <div class="wrapper-bottom">
+          <ul class="footer-menu">
+            <li>Vigie-Chiro {version}</li>
+            <li>
+              <a href="/#/policy">
+                Politique des données
+              </a>
+            </li>
+            <li>
+              <a href="/#/legal-mentions">
+                Mentions légales et politique de confidentialité
+              </a>
+            </li>
+            <li>
+              <a href="/#/cookies-policy">
+                Utilisations de cookies
+              </a>
+            </li>
+            <li>
+              <a href="/#/terms-of-service">
+                Conditions générales d'utilisation
+              </a>
+            </li>
+          </ul>
+        </div>
+        <a onclick="scrollToTop();" style="cursor: pointer;"> Retour en haut de page </a>
+      </div>
+    </footer>
+
+    <script>
+      function scrollToTop() {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      }
+    </script>
+    
+    
+
+    <!----------------------- END OF FOOTER ------------------------>
 
     <!-- <script src='//maps.googleapis.com/maps/api/js?key=GOOGLE_MAPS_API_KEY&libraries=drawing,geometry'></script> -->
     <script src='//maps.googleapis.com/maps/api/js?key=AIzaSyCuxbBluKEqE-kJLmxhY0MHB0kSxMMkCAQ&libraries=drawing,geometry'></script>

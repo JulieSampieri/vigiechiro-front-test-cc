@@ -1,20 +1,22 @@
-<nav class="navbar navbar-default navbar-static-top" role="navigation">
-  <div class="container">
+<span class="navbar1" role="navigation">
+  <div class="nav-container">
     <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
+    
+    <!--<div class="navbar">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar-collapse-1">
         <span class="sr-only">Navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href='/#/'>
-        <span>
-          <img src="/images/PictoVigieChiro.png" height="30">
-          Vigiechiro
-        </span>
-      </a>
-    </div>
+      </button> 
+    </div>  -->
+      <!--<a class="navbar-brand" href='/#/'>
+        <span class="brand-logo">
+          <img src="/images/LogoVigieChiroAccueil.png" height="40"> Accueil -->
+          <!-- <span class="brand-text">Vigie-Chiro</span> -->
+        <!-- </span>
+      </a> -->
+    
 
     <!-- Modal displaying vigiechiro charte -->
     <div class="modal fade" id="charteModal" tabindex="-1" role="dialog" aria-labelledby="charteModalLabel">
@@ -181,7 +183,9 @@ Vigie-chiro s’engage :
       </div>
     </div>
 
+
     <!-- Collect the nav links, forms, and other content for toggling -->
+    <!-- original
     <div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="dropdown">
@@ -195,28 +199,109 @@ Vigie-chiro s’engage :
           </ul>
         </li>
       </ul>
+      -->
+      <div id="header-total">
+      <header>
+        <h1 class="logo"> 
+          <a href='/#/'> 
+            <img src="/images/LogoVigieChiroAccueil.png" height="50" alt="LogoVigieChiro"> 
+          </a> 
+        </h1>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle">
+        <nav>
+          <ul>
+            <li><a href="#/participations/mes-participations">Participations <i class="fa fa-caret-down"></i></a>
+              <ul class="submenu">
+                <li><a href="#/participations/mes-participations">Mes participations</a></li>
+                <li><a href="#/participations">Toutes les participations</a></li>
+              </ul>
+            </li>
+            <li><a href="#/sites/mes-sites">Sites <i class="fa fa-caret-down"></i></a>
+              <ul class="submenu">
+                <li><a href="#/sites/mes-sites">Mes sites</a></li>
+                <li><a href="#/sites">Tous les sites</a></li>
+              </ul>
+            </li>
+            <li><a href="#/protocoles/mes-protocoles">Protocoles <i class="fa fa-caret-down"></i></a>
+              <ul class="submenu">
+                <li><a href="#/protocoles/mes-protocoles">Mes protocoles</a></li>
+                <li><a href="#/protocoles">Tous les protocoles</a></li>
+              </ul>
+            </li>
+            <li><a href="#/taxons">Taxons</a></li>
+            <li><a href="#/utilisateurs">Utilisateurs</a></li>
+            <li><a><b>{{user.pseudo}} <i class="fa fa-caret-down"></i> </b></a>
+              <ul class="submenu">
+                <li><a class="button-profile" href="#/profil">Profil</a></li>
+                <li><a class="button-logout" ng-click="logout()">Déconnexion</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+        <label for="nav-toggle" class="nav-toggle-label">
+          <span></span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-x" viewBox="0 0 16 16">
+            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+          </svg>
+        </label>
+      </header>
 
-      <p class="navbar-text">
-        <!-- a glyphicon as homepage -->
-        <a class="navbar-link" href="#/" title="homepage"><span class="glyphicon glyphicon-home icons-padding"></span></a>
-        <x ng-repeat="breadcrumb in breadcrumbs">
-          &nbsp;>&nbsp;&nbsp;
-          <a ng-if="!$last" ng-href="{{breadcrumb[1]}}" class="navbar-link">{{breadcrumb[0]}}</a>
-          <t ng-if="$last">{{breadcrumb[0]}}</t>
-        </x>
-      </p>
-      <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-            <a class="user-status dropdown-toggle" data-toggle="dropdown"
-               role="button" aria-expanded="false">
-               <b>{{user.pseudo}} </b><span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu" role="menu">
-              <li><a class="button-profile" href="#/profil">Profil</a></li>
-              <li><a class="button-logout" ng-click="logout()">Déconnexion</a></li>
-            </ul>
+
+      
+     <!-- <div class="sub-navbar">
+        <p class="navbar-text"> -->
+          <!-- a glyphicon as homepage -->
+          <!-- <a class="navbar-link" href="#/" title="homepage"><span class="glyphicon glyphicon-home icons-padding"></span></a>
+          <x ng-repeat="breadcrumb in breadcrumbs">
+            &nbsp;>&nbsp;&nbsp;
+            <a ng-if="!$last" ng-href="{{breadcrumb[1]}}" class="navbar-link">{{breadcrumb[0]}}</a>
+            <t ng-if="$last">{{breadcrumb[0]}}</t>
+          </x>
+        </p>
+      </div>-->
+
+
+      <ul class="breadcrumb">
+        <li> 
+          <!-- a glyphicon as homepage -->
+          <a class="navbar-link" href="#/" title="homepage">
+            <span class="glyphicon glyphicon-home icons-padding"></span>
+          </a>
+        </li>
+        <li>
+          <span ng-repeat="breadcrumb in breadcrumbs" class="breadcrumb__item">
+            <span class="breadcrumb__inner">
+              <span class="breadcrumb__title">
+                <a ng-href="{{breadcrumb[1]}}">{{breadcrumb[0]}}</a> 
+              </span>
+            </span>
+          </span>
         </li>
       </ul>
+
+    </div>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
-</nav>
+</span>
+
+
+
+
+<script>
+  //shrink the navbar on scroll
+  window.onscroll = function() { scrollFunction() };
+
+  function scrollFunction() {
+    var logo = document.querySelector(".logo");
+    var breadcrumb = document.querySelector(".breadcrumb");
+
+    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+      logo.classList.add("shrink");
+      breadcrumb.classList.add("move-down");
+    } else {
+      logo.classList.remove("shrink");
+      breadcrumb.classList.remove("move-down");
+    }
+  }
+</script>
+

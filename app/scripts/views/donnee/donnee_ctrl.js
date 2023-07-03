@@ -32,6 +32,7 @@
       id: null
     };
     $scope.filteredTaxons = [];
+    $scope.tadarida_probabilite = {}; /*ajout*/
     Backend.one('participations', $routeParams.participationId).get().then(function(participation) {
       var i, j, k, len, len1, len2, ref, ref1, ref2, taxon;
       $scope.participation = participation.plain();
@@ -104,6 +105,20 @@
         }
       });
     });
+    /*ajout du filtre probabilité égale à */
+    console.log("test1");
+    $scope.$watch('probabilite', function(probabilite) {
+      console.log("probabilite", probabilite, "fin probabilite");
+      return delayedFilter.triggerEvent(function() {
+        if ((probabilite != null) && probabilite !== '') {
+          return $scope.lookup.tadarida_probabilite = probabilite;
+        } else if ($scope.lookup.tadarida_probabilite != null) {
+          return delete $scope.lookup.tadarida_probabilite;
+        }
+      });
+    });
+    console.log("test");
+    /*fin de l'ajout du filtre probabilité égale à */
     $scope.resourceBackend = Backend.all('participations/' + $routeParams.participationId + '/donnees');
     $scope.updateResourcesList = function(current_scope) {
       var i, j, key, len, len1, observation, ref, ref1, resource, results;

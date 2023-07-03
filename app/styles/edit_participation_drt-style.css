@@ -1,0 +1,4 @@
+.tooltip-conf:hover::before{
+  content: attr(data-tooltip);
+  display: none;
+}

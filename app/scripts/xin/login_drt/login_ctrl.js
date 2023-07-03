@@ -12,7 +12,7 @@
   angular.module('xin_login', ['ngRoute', 'xin_session', 'appSettings']).directive('loginDirective', function($location, $rootScope, $route, session, SETTINGS) {
     return {
       restrict: 'E',
-      templateUrl: 'scripts/xin/login_drt/login.html',
+      templateUrl: 'scripts/xin/login_drt/landingPage.html', /* PREVIOUSLY: scripts/xin/login_drt/login.html NOW: scripts/xin/login_drt/landingPage.html*/
       link: function($scope, elem, attrs) {
         var content_elem, detectLoginNeeded, login_elem, routeParams, token;
         routeParams = $route.current.params;

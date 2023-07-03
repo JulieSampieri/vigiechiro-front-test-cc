@@ -1,0 +1,78 @@
+/* see also landingPage-style.css */
+
+/*------ Mes sites ------*/
+
+.mes-sites-actualites{
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding-top: 100px;
+    text-align: center;
+}
+
+.mes-sites-actualites-col{
+    flex-basis: 49%;
+    background: transparent;
+    border-radius: 10px;
+    margin-bottom: 5%;
+    padding: 20px 20px;
+    box-sizing: border-box;
+    transition: 0.5s;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.mes-sites-actualites-col ul {
+    list-style-type: none;
+    padding: 0;
+    min-width: 400px;
+    height: fit-content;
+  }
+
+  
+
+  .mes-sites-actualites-col a {
+    color: var(--c-primary);
+  }
+
+  
+  .mes-sites-actualites-col a:hover {
+    text-decoration: underline;
+  }
+
+/*
+  .mes-sites-actualites-col:hover{
+    box-shadow: 0 0 20px 0px rgba(0,0,0,0.2);
+}
+*/
+
+/*------ Mes actualités ------*/
+
+.actualites-col{
+    flex-basis: 100%;
+    border-radius: 10px;
+    margin-bottom: 5%;
+    padding: 20px 12px;
+    box-sizing: border-box;
+    transition: 0.5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.actualites-col a {
+    color: var(--c-primary);
+  }
+
+.actualites-col a:hover {
+    text-decoration: underline;
+}
+
+.actualites-col ul {
+    min-width: 400px;
+    height: fit-content;
+  }
+
+  

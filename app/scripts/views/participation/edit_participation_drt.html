@@ -3,13 +3,16 @@
     <span class="glyphicon glyphicon-exclamation-sign"></span> {{participation._errors.participation}}
   </div>
 
-  <date-text-input-directive label="'Date de début'"
+  <div class="mandatory-note">
+    <p>Les champs marqués d'un astérisque (*) sont obligatoires.</p>
+  </div>
+
+  <date-text-input-directive label="'Date de début *'"
                              model="participation.date_debut"
-                             error="participation._errors.date_debut"
-                             today>
+                             error="participation._errors.date_debut">
   </date-text-input-directive>
 
-  <date-text-input-directive label="'Date de fin'"
+  <date-text-input-directive label="'Date de fin *'"
                              model="participation.date_fin"
                              error="participation._errors.date_fin">
   </date-text-input-directive>
@@ -62,23 +65,21 @@
     </select>
   </div>
 
-  <div class="form-group" ng-class="{'has-error': participationForm.commentaire.$invalid && !participationForm.$pristine}">
-    <textarea rows="3" class="form-control" id="commentaire" name="commentaire"
-              ng-model="participation.commentaire" ng-disabled="readOnly"
-              placeholder="Commentaire"></textarea>
-  </div>
-
   <div class="form-group" ng-if="typeSite == 'POINT_FIXE'">
     <div class="input-group">
       <label class="input-group-addon">
-        Point du site
+        Point du site *
       </label>
       <select class="form-control"
-              ng-model="participation.point" ng-disabled="readOnly">
+              ng-model="participation.point" ng-disabled="readOnly" error="participation._errors.point"> 
+        <option value="" disabled selected hidden>Choisissez un point</option>
         <option ng-repeat="locality in localities" value="{{locality}}">
           {{locality}}
         </option>
       </select>
+    </div>
+    <div ng-if="participation._errors.point" class="alert alert-danger">
+      <span class="glyphicon glyphicon-exclamation-sign"></span> {{participation._errors.point}}
     </div>
   </div>
 
@@ -87,12 +88,15 @@
     ng-if="true">
     <div class="input-group">
       <label class="input-group-addon" for="configuration.detecteur_enregistreur_numero_serie">
-        Numéro de série du détecteur enregistreur
+        Numéro de série du détecteur enregistreur *
       </label>
       <input type="text" class="form-control"
         id="configuration.detecteur_enregistreur_numero_serie"
         name="detecteur_enregistreur_numero_serie"
-        ng-model="participation.configuration.detecteur_enregistreur_numero_serie" ng-disabled="readOnly">
+        ng-model="participation.configuration.detecteur_enregistreur_numero_serie" ng-disabled="readOnly" error="participation._errors.numDetecteur">
+    </div>
+    <div ng-if="participation._errors.numDetecteur" class="alert alert-danger">
+      <span class="glyphicon glyphicon-exclamation-sign"></span> {{participation._errors.numDetecteur}}
     </div>
   </div>
 
@@ -101,14 +105,16 @@
     ng-if="true">
     <div class="input-group">
       <label class="input-group-addon" for="configuration.detecteur_enregistreur_type">
-        Type du détecteur enregistreur
+        Type du détecteur enregistreur *
       </label>
       <select class="form-control"
               id="configuration.detecteur_enregistreur_type"
               name="detecteur_enregistreur_type"
               ng-model="participation.configuration.detecteur_enregistreur_type"
-              ng-disabled="readOnly">
-        <option value=""></option>
+              ng-disabled="readOnly"
+              error="participation._errors.typeDetecteur"
+              >
+        <option value="" disabled selected hidden>Choisissez un détecteur enregistreur</option>
         <option value="Anabat Chorus">Anabat Chorus</option>
         <option value="Anabat Swift">Anabat Swift</option>
         <option value="Anabat Walkabout">Anabat Walkabout</option>
@@ -156,6 +162,9 @@
         <option value="Ultramic250k + Soundchaser">Ultramic250k + Soundchaser</option>
         <option value="Ultramic250k + Syrinx">Ultramic250k + Syrinx</option>
       </select>
+    </div>
+    <div ng-if="participation._errors.typeDetecteur" class="alert alert-danger">
+      <span class="glyphicon glyphicon-exclamation-sign"></span> {{participation._errors.typeDetecteur}}
     </div>
   </div>
 
@@ -240,6 +249,7 @@
               name="micro0_type"
               ng-model="participation.configuration.micro0_type"
               ng-disabled="readOnly">
+        <option value=""></option>
         <option value="Autre micro externe">Autre micro externe</option>
         <option value="BIO-SM2-US">BIO-SM2-US</option>
         <option value="ICS">ICS</option>
@@ -371,4 +381,40 @@
       Le canal en expansion de temps et le canal en enregistrement direct doivent être tous les 2 vides ou avoir une valeur (Gauche, Droit ou Absent).
     </span>
   </div>
+
+<!-- ajout du suivi de gite -->
+  <small id="infoConfidentialite" class="form-text text-muted">Les données de suivi de gîte sont confidentielles. Elles sont visibles par les chercheurs du MNHN mais cachées pour les utilisateurs.</small>
+  <div class="input-group form-group">
+    <span class="input-group-addon">Suivi de gîte</span>
+    <select class="form-control" name="gite"
+      ng-model="participation.gite" 
+      ng-disabled="readOnly"
+      ng-init="participation.gite = 'NON'">
+      <option value="" disabled selected hidden>Non</option>
+      <option value="NON">Non</option>
+      <option value="EN_SORTIE">En sortie</option>
+      <option value="A_L_INTERIEUR">A l'intérieur</option>
+    </select>
+  </div>
+  
+    
+
+  <div class="form-group" ng-class="{'has-error': participationForm.commentaire.$invalid && !participationForm.$pristine}">
+    <textarea rows="3" class="form-control" id="commentaire" name="commentaire"
+              ng-model="participation.commentaire" ng-disabled="readOnly"
+              placeholder="Commentaire"></textarea>
+  </div>
+
+  <!-- ajout de la case participation confidentielle -->
+  <!-- attention elle est toujours à faire, il n'y a rien d'autre que l'affichage pour l'instant -->
+  <label>
+    <input type="checkbox" id="confidentiality-checkbox">
+      Participation confidentielle
+      <span class="tooltip-conf" data-tooltip="Les données confidentielles sont visibles par les chercheurs du MNHN mais sont cachées pour les utilisateurs."><sup  class="badge smaller">?</sup></span>
+  </label>
+
+  
+  
 </div>
+
+

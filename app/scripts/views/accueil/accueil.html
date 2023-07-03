@@ -1,51 +1,223 @@
-<div class="col-md-12">
-  <div class="panel panel-default">
-    <ul class="list-group">
-      <li class="list-group-item"><b>Tutoriels pour utiliser le portail</b></li>
-      <li class="list-group-item">
-        <ul>
-          <li>
-            <a href="https://docs.google.com/presentation/d/1Wxk-XVmiGazUPIkSQtmqAKaU2hzlX-V3OhsJIHEORlM/edit?usp=sharing">Protocole Point Fixe</a>
-          </li>
-          <li>
-            <a href="https://docs.google.com/presentation/d/1XIdBZB47D3NCpP6vd_EyVWXWcaPhFDVyAO_tF8Q3E8o/edit?usp=sharing">Protocoles Routiers et Pédestres</a>
-          </li>
-          <li>
-            <a href="https://drive.google.com/file/d/1LzPVuyC00TdrkcIiVZ21H053DgFJhixu/view">Foire aux questions les plus courantes</a>
-          </li>
-          <li>
-            <a href="https://croemer3.wixsite.com/teamchiro/vigie-chiro?lang=fr">Les principaux résultats du programme</a>
-          </li>
-          <li>
-            <a href="https://vigie-chiro.forumactif.com/">Forum pour poser vos questions</a>
-          </li>
-          <li>
-            <a href="https://framalistes.org/sympa/subscribe/vigie-chiro">S’inscrire à la liste de diffusion mail</a>
-          </li>
-          <li>
-            <a href="http://www.vigienature.fr/fr/page/documentations-identification-acoustique">Des ressources sur l’identification acoustique</a>
-          </li>
-        </ul>
-      </li>
-    </ul>
-  </div>
+<span class="container container1">
+<div class="landing">
+  <h3> Vigie-chiro </h3>
+  <p> Bienvenue sur le portail </p>
+  <p class="redirection-forum">
+    <b>En cas de demande d'assistance, utilisez en priorité <a class="light-link" href="https://vigie-chiro.forumactif.com/" target="_blank"> le forum.</a></b>
+  </p>
 </div>
 
-<div class="col-md-8">
-  <list-mes-actualites-directive>
-  </list-mes-actualites-directive>
+<div class="content-sections"> <!-- if this div is a span then the grey bg fills the screen but problem with responsive -->
+
+  <section class="presentation"> 
+    <div class="bg-color">
+      <h1> Déposer des fichiers sonores </h1>
+      <h3>Votre lieu d'observation est déjà connu de Vigie-chiro :</h3>
+        <p> Vous pouvez accéder à <a class="light-link" href="#/sites/mes-sites"><b>vos sites</b></a> 
+          <br> ou <br>
+          Renseigner une nouvelle participation opportuniste <span class="tooltip-conf" data-tooltip="Les participations opportunistes sont des participations sur les sites d'autres utilisateurs"><sup  class="badge smaller">?</sup></span> en parcourant <a class="light-link" href="#/sites"><b>tous les sites.</b></a>
+        </p> 
+        <h3>Créer un nouveau site d'observation :</h3>
+        <p> 
+          Sélectionnez un protocole, consultez son tutoriel et créez un nouveau site : 
+        </p> 
+    </div>
+
+    <div class="presentation-row">
+      <div class="presentation-col">
+        <h3>Point fixe</h3>
+          <p> 
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+            ut labore et dolore magna aliqua. Euismod lacinia at quis risus sed vulputate odio ut. 
+            <br><br> <a class="light-link" href="https://docs.google.com/presentation/d/1Wxk-XVmiGazUPIkSQtmqAKaU2hzlX-V3OhsJIHEORlM/edit?usp=sharing" target="_blank"> <b>Consulter le tutoriel</b> </a>
+            <hr/>
+            <a class="btn btn-primary" href="#/protocoles/54bd090f1d41c8103bad6252/nouveau-site" target="_blank"> <!-- a revoir pour en faire une expression {{protocole._id}} -->
+              Nouveau Site Point fixe
+            </a>
+          </p>
+      </div>
+      <div class="presentation-col">
+        <h3>Pédestre</h3>
+          <p> 
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+            ut labore et dolore magna aliqua. Euismod lacinia at quis risus sed vulputate odio ut. 
+            <br><br> <a class="light-link" href="https://docs.google.com/presentation/d/1XIdBZB47D3NCpP6vd_EyVWXWcaPhFDVyAO_tF8Q3E8o/edit?usp=sharing" target="_blank"> <b>Consulter le tutoriel</b> </a>
+            <hr/>
+            <a class="btn btn-primary" href="#/protocoles/54bd08a51d41c8103bad6250/nouveau-site" target="_blank"> <!-- a revoir pour en faire une expression {{protocole._id}} -->
+              Nouveau Site Pédestre
+            </a>
+          </p>
+      </div>
+      <div class="presentation-col">
+        <h3>Routier</h3>
+          <p> 
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+            ut labore et dolore magna aliqua. Euismod lacinia at quis risus sed vulputate odio ut. 
+            <br><br> <a class="light-link" href="https://docs.google.com/presentation/d/1XIdBZB47D3NCpP6vd_EyVWXWcaPhFDVyAO_tF8Q3E8o/edit?usp=sharing" target="_blank"> <b>Consulter le tutoriel</b> </a>
+            <hr/>
+            <a class="btn btn-primary" href="#/protocoles/54bd08ba1d41c8103bad6251/nouveau-site" target="_blank"> <!-- a revoir pour en faire une expression {{protocole._id}} -->
+              Nouveau Site Routier
+            </a>
+          </p>
+      </div>
+    </div>
+
+    <h1> Objectifs du programme </h1>
+    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
+        ut labore et dolore magna aliqua. Euismod lacinia at quis risus sed vulputate odio ut. Ornare lectus 
+        sit amet est placerat in egestas.
+    </p> 
+  </section>
+
+  <div class="bg-color">
+    <section class="statistiques"> 
+      <h1> Statistiques </h1>
+        <p> 
+          Les statistiques générales des participations , consectetur adipiscing elit, sed do eiusmod tempor incididunt
+          ut labore et dolore magna aliqua. 
+        </p>
+
+        <div class="presentation-row">
+          <div class="statistiques-col"> <!--Chiffres à modifier lorsque api dispo pour interroger directement la base-->
+            <h3>Nombre de sites :</h3>
+              <p> 
+                11 468
+              </p>
+          </div>
+          <div class="statistiques-col">
+            <h3>Nombre de nuits :</h3>
+              <p> 
+                47 384
+              </p>
+          </div>
+          <div class="statistiques-col">
+            <h3>Nombre de participants :</h3>
+              <p> 
+                2 493
+              </p>
+          </div>
+        </div>
+    </section>
+  </div>
+
+  <section class="carte-participations"> 
+    <h1> Carte des sites </h1>
+    <p> En construction </p>
+    <img src="images/World_Map_Outline.png">
+
+  </section>
+
+  <div class="bg-color">
+    <section class="mes-sites-actualites"> 
+      <h1 id="mes-sites-id"> Mes sites </h1>
+      <div class="presentation-row">
+        <div class="mes-sites-actualites-col">
+          <div class="panel panel-default">
+            <ul class="list-group">
+              <li class="list-group-item"><b>Mes sites</b></li>
+              <li ng-repeat="site in userSites" class="list-group-item">
+                <a class="btn btn-default" href="#/sites/{{site._id}}">{{site.titre}}</a>
+              </li>
+              <li ng-if="!userSites || userSites.length == 0" class="list-group-item">
+                Pas de sites pour le moment, rejoignez un <a ng-href="#/protocoles">protocole</a> pour commencer
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mes-sites-actualites-col">
+          <p> En construction <img src="images/World_Map_Outline.png">
+          </p>
+        </div>
+
+      </div>
+    </section> 
+  </div>
+  
+  <section class="mes-sites-actualites"> 
+    <h1> Mes actualités </h1>
+    <div class="presentation-row">
+      <div class="actualites-col">
+        
+          <list-mes-actualites-directive>
+          </list-mes-actualites-directive>
+        
+      </div>
+      </div>
+  </section> 
+
+
+  <div class="bg-color">
+    <section class="last-news"> 
+      <h1> Les dernières nouvelles </h1>
+      <p> 
+        Mises à jour, informations générales du programme, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+        ut labore et dolore magna aliqua. 
+      </p>
+
+      <div class="presentation-row"> 
+        <div class="last-news-col">
+          <img src="images/Data_Arranging_Flatline.png"> <!-- https://www.manypixels.co/gallery -->
+          <h3>Mises à jour</h3>
+          <p>Euismod lacinia at quis risus sed vulputate odio ut.</p>
+        </div>
+        <div class="last-news-col">
+          <img src="images/Online_report_Flatline.png">
+          <h3>Informations générales</h3>
+          <p>Euismod lacinia at quis risus sed vulputate odio ut.</p>
+        </div>
+        <div class="last-news-col">
+          <img src="images/Flying_kite_Outline.png">
+          <h3>Lorem ipsum</h3>
+          <p>Euismod lacinia at quis risus sed vulputate odio ut.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section class="FAQ-Liens-utiles"> 
+    <h1> Tutoriels, FAQ et liens utiles </h1>
+
+    <div class="presentation-row">
+      <div class="FAQ-Liens-utiles-col" id="FAQ-Liens-utiles-menu">
+        <h3>Tutoriels</h3>
+          <p>
+            <ul>
+              <li><a href="https://docs.google.com/presentation/d/1Wxk-XVmiGazUPIkSQtmqAKaU2hzlX-V3OhsJIHEORlM/edit?usp=sharing" target="_blank"> <b>Tutoriel Point Fixe</b> </a></li>
+              <li><a href="https://docs.google.com/presentation/d/1XIdBZB47D3NCpP6vd_EyVWXWcaPhFDVyAO_tF8Q3E8o/edit?usp=sharing" target="_blank"> <b>Tutoriel Pédestre</b> </a></li>
+              <li><a href="https://docs.google.com/presentation/d/1XIdBZB47D3NCpP6vd_EyVWXWcaPhFDVyAO_tF8Q3E8o/edit?usp=sharing" target="_blank"> <b>Tutoriel Routier</b> </a></li>
+            </ul>
+          </p>
+      </div>
+      <div class="FAQ-Liens-utiles-col">
+        <h3>Foire Aux Questions</h3>
+        <p> 
+          Les réponses aux questions les plus courantes...
+          <br><br> <a class="light-link" href="https://drive.google.com/file/d/1LzPVuyC00TdrkcIiVZ21H053DgFJhixu/view" target="_blank"> <b>Consultez la FAQ</b> </a>
+        </p>
+      </div>
+      <div class="FAQ-Liens-utiles-col">
+        <h3>Liens utiles</h3>
+          <p> 
+            <ul>
+              <li>
+                <a href="https://croemer3.wixsite.com/teamchiro/vigie-chiro?lang=fr" target="_blank">Les principaux résultats du programme</a>
+              </li>
+              <li>
+                <a href="https://vigie-chiro.forumactif.com/" target="_blank">Forum pour poser vos questions</a>
+              </li>
+              <li>
+                <a href="https://framalistes.org/sympa/subscribe/vigie-chiro" target="_blank">S’inscrire à la liste de diffusion mail</a>
+              </li>
+              <li>
+                <a href="http://www.vigienature.fr/fr/page/documentations-identification-acoustique" target="_blank">Des ressources sur l’identification acoustique</a>
+              </li>
+            </ul>
+          </p>
+      </div>
+    </div>
+  </section>
+
 </div>
 
-<div class="col-md-4">
-  <div class="panel panel-default">
-    <ul class="list-group">
-      <li class="list-group-item"><b>Mes sites</b></li>
-      <li ng-repeat="site in userSites" class="list-group-item">
-        <a href="#/sites/{{site._id}}">{{site.titre}}</a>
-      </li>
-      <li ng-if="!userSites || userSites.length == 0" class="list-group-item">
-        Pas de sites pour le moment, rejoignez un <a ng-href="#/protocoles">protocole</a> pour commencer
-      </li>
-    </ul>
-  </div>
-</div>
+</span>

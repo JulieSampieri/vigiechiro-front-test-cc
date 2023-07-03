@@ -1,72 +1,50 @@
-/* basic elements */
-html {
-	margin: 0;
-	padding: 0;
-	}
-body { 
-	font: 75% georgia, sans-serif;
-	line-height: 1.88889;
-	color: #555753; 
-	background: #fff url(http://csszengarden.com/001/blossoms.jpg) no-repeat bottom right; 
-	margin: 0; 
-	padding: 0;
-	}
-p { 
-	margin-top: 0; 
-	text-align: justify;
-	}
-h3 { 
-	font: italic normal 1.4em georgia, sans-serif;
-	letter-spacing: 1px; 
-	margin-bottom: 0; 
-	color: #7D775C;
-	}
-a:link { 
-	font-weight: bold; 
-	text-decoration: none; 
-	color: #B7A5DF;
-	}
-a:visited { 
-	font-weight: bold; 
-	text-decoration: none; 
-	color: #D4CDDC;
-	}
-a:hover, a:focus, a:active { 
-	text-decoration: underline; 
-	color: #9685BA;
-	}
-abbr {
-	border-bottom: none;
-	}
+:root{
+  --c-primary: #5D7B84;
+  --c-primary-light: #95B9C4;
+  --c-primary-dark: #2D4952;
+  --c-primary-25: rgba(45,73,82,0.25);
+  --c-primary-30: rgba(45,73,82,0.3);
+  --c-primary-60: rgba(45,73,82,0.6);
+  --c-scrollbar-bg: #CFD8DC;
+  --c-thumb-bg: #5D7B84;
+}
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
+/*
 .header,
 .marketing,
 .footer {
   padding-left: 15px;
   padding-right: 15px;
 }
+*/
 
 /* Custom page header */
+/*
 .header {
   border-bottom: 1px solid #e5e5e5;
 }
+*/
 /* Make the masthead heading the same height as the navigation */
+/*
 .header h3 {
   margin-top: 0;
   margin-bottom: 0;
   line-height: 40px;
   padding-bottom: 19px;
 }
-
+*/
 /* Custom page footer */
+/*
 .footer {
   padding-top: 19px;
   color: #777;
   border-top: 1px solid #e5e5e5;
 }
+*/
 
 /* Customize container */
+/*
 @media (min-width: 768px) {
   .container {
     max-width: 730px;
@@ -75,8 +53,10 @@ abbr {
 .container-narrow > hr {
   margin: 30px 0;
 }
+*/
 
 /* Main marketing message and sign up button */
+/*
 .jumbotron {
   text-align: center;
   border-bottom: 1px solid #e5e5e5;
@@ -85,14 +65,19 @@ abbr {
   font-size: 21px;
   padding: 14px 24px;
 }
+*/
 
 /* Supporting marketing content */
+/*
 .marketing {
   margin: 40px 0;
 }
 .marketing p + h4 {
   margin-top: 28px;
 }
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Lato:wght@400;700&family=Montserrat:wght@300;500&display=swap');
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
@@ -114,43 +99,90 @@ abbr {
 }
 
 .g-maps {
-  height: 400px;
+  height: 500px;
   margin: 0px;
   padding: 0px;
 }
 
 /* Sticky footer styles
 -------------------------------------------------- */
+
 html {
   position: relative;
   min-height: 100%;
-}
+} 
+
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
-}
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-  background-color: #f5f5f5;
+  font-family: 'Montserrat', sans-serif;
+  /* Margin bottom by footer height */ 
+  margin-bottom: 280px;
+  /* background bat*/
+  background: #fff url(/images/chauvesouris.png) no-repeat;
+  background-position: right bottom 240px;
+} 
+
+.content {
+  padding-top: 150px;
+  width: 60%;
+  margin: auto;
+  padding-bottom: 250px;
 }
 
+.panel-body{
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .content {
+    width: 90%; /* Reduce the width to accommodate smaller screens */
+    padding-top: 130px;
+  }
+}
+
+
+.container{
+  all: unset;
+  width: 100%;
+}
+
+/* hide for the pièces jointes in participation*/
+.container.collapse {
+  display: none;
+}
+
+a[data-toggle="collapse"][aria-expanded="true"] + .container.collapse {
+  display: block;
+}
+
+
+/*
+content{
+  width: 80%;
+  margin:0;
+}
+*/
+/*
+.container{
+  width: 80%;
+  margin:0;
+  display: block;
+}*/
 
 /* Custom page CSS
 -------------------------------------------------- */
 /* Not required for template or sticky footer method. */
 
+/*
 .container {
   width: auto;
   max-width: 950px;
   padding: 0 15px;
 }
+
 .container .text-muted {
   margin: 20px 0;
 }
+*/
 
 .center-block {
   display: block;
@@ -174,11 +206,270 @@ body {
 }
 
 .actionbar {
-  text-align: right;
+  /*text-align: right;*/
   border-bottom: 1px solid #C0C0C0;
   padding-bottom: 4px;
+
+  display: flex; 
+  justify-content: space-between;
 }
 
-.actionbar .btn {
-  margin-bottom: 4px;
+
+
+
+.list-group{
+  padding: 20px;
+}
+
+/*
+.form-control{
+  min-width: 300px;
+}
+*/
+
+.panel-default{
+  border-radius: 10px;
+}
+
+/******************* FOOTER ************************/
+
+.wrapper-bottom {
+  text-align: center;
+}
+
+.footer-menu {
+  display: inline-block;
+  list-style: none;
+  padding: 0;
+  color: white;
+}
+
+.footer-menu li {
+  display: inline-block;
+}
+
+.footer-menu li:not(:last-child)::after {
+  content: "|";
+  margin: 0 5px;
+}
+
+
+/******************* BUTTONS ***********************/
+
+a.btn.btn-primary{
+  all:unset;
+  margin: 0 0 0;
+  background-color: var(--c-primary);
+  color: #fff;
+  border: 0;
+  cursor: pointer;
+  border-radius: 2px;
+  display: inline-block;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.8rem;
+  padding: 1.6rem 2.2rem;
+  transition: all .2s ease-in-out; 
+}
+
+a.btn.btn-primary:hover{
+  background-color: var(--c-primary-dark);
+}
+
+sc-button.btn.btn-primary{
+  all:unset;
+  margin: 0 0 0;
+  background-color: var(--c-primary);
+  color: #fff;
+  border: 0;
+  cursor: pointer;
+  border-radius: 2px;
+  display: inline-block;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.8rem;
+  padding: 1.6rem 2.2rem;
+  transition: all .2s ease-in-out; 
+}
+
+sc-button.btn.btn-primary:hover{
+  background-color: var(--c-primary-dark);
+}
+
+a.btn.btn-default {
+  all: unset;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.8rem;
+  border-color: var(--c-primary);
+  background-color: transparent;
+  border: 1px solid var(--c-primary);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: .7rem 1.1rem;
+  transition: var(--c-primary) .2s ease-in-out;
+  color: #222;
+  cursor: pointer;
+  text-decoration: none;
+  margin: 2px;
+}
+
+
+/*
+a.btn.btn-default{
+  all: unset;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.8rem;
+  border-color: var(--c-primary);
+  background-color: transparent;
+  border: 1px solid var(--c-primary);
+  border-radius: 2px;
+  display: inline-block;
+  padding: .7rem 1.1rem;
+  transition: var(--c-primary) .2s ease-in-out;
+  color: #222;
+  cursor: pointer;
+  text-decoration: none;
+  margin: 2px;
+}
+*/
+a.btn.btn-default:hover{
+  border-color: var(--c-primary-dark);
+  background-color: #f5f5f5;
+}
+
+a.btn {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.8rem;
+  border: 1px solid;
+  border-radius: 2px;
+  display: inline-block;
+  padding: .7rem 1.1rem;
+  cursor: pointer;
+  text-decoration: none;
+  margin: 2px;
+}
+
+.button-group {
+  display: flex;
+}
+
+.button-group a {
+  margin-right: 100%; /* Adjust the spacing as needed */
+}
+
+a {
+  color: var(--c-primary) ;
+}
+
+a:hover {
+  color: var(--c-primary) ;
+}
+
+.light-link{
+  all:unset;
+  background-color: var(--c-primary) ;
+  color: #fff;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.light-link:hover{
+  background-color:#CFD8DC ;
+  color: var(--c-primary);
+}
+
+button.btn.btn-primary{
+  all:unset;
+  margin: 0 0 0;
+  background-color: var(--c-primary);
+  color: #fff;
+  border: 0;
+  cursor: pointer;
+  border-radius: 2px;
+  display: inline-block;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.8rem;
+  padding: 1.6rem 2.2rem;
+  transition: all .2s ease-in-out; 
+}
+
+button.btn.btn-primary:hover{
+  background-color: var(--c-primary-dark);
+}
+
+a.btn.btn-warning{
+  all:unset;
+  margin: 0.5 0.5 0.5;
+  background-color: rgb(179, 119, 9);
+  color: #fff;
+  border: 0;
+  cursor: pointer;
+  border-radius: 2px;
+  display: inline-block;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.8rem;
+  padding: 1.6rem 2.2rem;
+  transition: all .2s ease-in-out; 
+}
+
+a.btn.btn-warning:hover{
+  background-color: rgb(105, 70, 6);
+}
+
+.btn.btn-success{
+  all:unset;
+  margin: 0 0 0;
+  background-color: #449d44;
+  color: #fff;
+  border: 0;
+  cursor: pointer;
+  border-radius: 2px;
+  display: inline-block;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.8rem;
+  padding: 1.6rem 2.2rem;
+  transition: all .2s ease-in-out; 
+}
+
+.btn.btn-success:hover{
+  background-color: #398439;
+}
+
+
+a.btn.btn-secondary {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.6rem;
+  font-style: normal;
+  color: black;
+  font-weight: 400;
+  line-height: 1.8rem;
+  border: 2px solid #5D7B84;
+  border-radius: 2px;
+  display: inline-block;
+  padding: .7rem 1.1rem;
+  cursor: pointer;
+  text-decoration: none;
+  margin: 2px;
+}
+
+a.btn.btn-secondary:hover {
+  background-color:#f0f0f0;
+  border: 2px solid #526c74;
 }

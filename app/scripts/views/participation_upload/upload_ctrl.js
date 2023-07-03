@@ -64,5 +64,13 @@
       });
     };
   });
-
+  //ajout a reprendre
+ /* $scope.infoUpload = function() {
+          var modalInstance;
+          modalInstance = $modal.open({
+            templateUrl: 'scripts/views/xin/upload_file/info_upload.html',
+            controller: 'ModalInstanceController',
+          });
+        }; */ 
+  //fin de l'ajout
 }).call(this);

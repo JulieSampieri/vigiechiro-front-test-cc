@@ -1,0 +1,364 @@
+@media (max-width: 768px) {
+    .content1 {
+      width: 100%; /* Reduce the width to accommodate smaller screens */
+    }
+  }
+
+@media (max-width: 768px) {
+    .landing-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+
+
+/* background decoration */
+
+.bg-color{
+    background-color: #CFD8DC !important;
+}
+
+/* first section with title */
+
+.landing-header{
+    position: fixed;
+    background-color: #5D7B84;
+    width:100%;
+    z-index: 150;
+    text-align: right;
+}
+
+.landing {
+    margin-top:0;
+    text-align: center;
+    width: 100%;
+    min-height: 60vh;
+    /* background-image: linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7), url(images/accueil-temporaire.png)); */
+    /* background: linear-gradient(90deg,rgb(15, 15, 15), var(--c-scrollbar-bg));*/
+    background-color: rgb(56, 53, 53) ; 
+    background-position: center;
+    background-size: cover;
+    color:aliceblue;
+    position: relative;
+    z-index:101; /* to make the landing-header appear on scroll */
+}
+
+.landing h3{
+    width: 90%;
+    color: #fff;
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 50px;
+    font-weight: 600;
+}
+
+.landing p{
+    width: 90%;
+    color: #fff;
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 25px;
+    margin: 30px 0 40px;
+}
+
+.redirection-forum{
+    top: 90% !important;
+    font-size: 15px !important;
+}
+
+.landing-header header ul li a{
+    all: unset;
+    align-items: bottom;
+    color: grey;
+}
+
+
+@media(max-width: 768px){
+    #not-connected-landing {
+        top: 150px;
+    }
+
+    #not-connected-content-section{
+        top: 200px;
+    }
+
+    .landing h3{
+        width: 90%;
+        color: #fff;
+        position: absolute;
+        top: 30px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        font-size: 30px;
+    }
+
+    .landing p{
+        width: 90%;
+        color: #fff;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        font-size: 12px;
+        margin: 10px 0 40px;
+    }
+
+    .redirection-forum{
+        top: 90% !important;
+        font-size: 10px !important;
+    }
+
+    .content-sections{
+        padding-bottom: 350px;
+    }
+
+}
+
+/*------ general content style ------*/
+
+.content-sections{
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding-top: 50px;
+}
+
+.content-sections h1{
+    font-size: 36px;
+    font-weight: 600;
+}
+
+.content-sections p{
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    padding: 10px;
+}
+
+
+.presentation{
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding-top: 100px;
+}
+
+.presentation h1{
+    font-size: 36px;
+    font-weight: 600;
+}
+
+.presentation h3{
+    font-weight: 600;
+}
+
+.presentation p{
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 25px;
+    padding: 10px;
+}
+
+.presentation-row{
+    margin-top: 5%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.presentation-col{
+    flex-basis: 31%;
+    background: #CFD8DC;
+    border-radius: 10px;
+    margin-bottom: 5%;
+    padding: 20px 12px;
+    box-sizing: border-box;
+    transition: 0.5s;
+}
+
+.presentation-col:hover{
+    box-shadow: 0 0 20px 0px rgba(0,0,0,0.2);
+}
+
+@media(max-width: 700px){
+    .presentation-row{
+        flex-direction: column;
+    }
+}
+
+
+/*------ statistiques ------*/
+
+.statistiques{
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.statistiques h1{
+    font-size: 36px;
+    font-weight: 600;
+}
+
+.statistiques p{
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 22px;
+    padding: 10px;
+}
+
+.statistiques-col{
+    flex-basis: 27%;
+    background: #5D7B84;
+    border-radius: 200px;
+    margin-bottom: 5%;
+    padding: 20px 12px;
+    box-sizing: border-box;
+    transition: 0.5s;
+    color: white;
+}
+
+.statistiques-col:hover{
+    box-shadow: 0 0 20px 0px rgba(0,0,0,0.2);
+}
+
+/* affichage on hover 
+.statistiques-col{
+    flex-basis: 32%;
+    border-radius: 10px;
+    margin-bottom: 5%;
+    position: relative;
+    overflow: hidden;
+}
+
+.statistiques-col img{
+    width: 100%;
+}
+
+
+
+.layer{
+    background: transparent;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: 0.5s;
+}
+
+.layer:hover{
+    background: rgba(149,185,196, 0.7) ;
+}
+
+.layer h3{
+    width: 100%;
+    font-weight: 500;
+    color: #fff;
+    font-size: 26px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.layer:hover h3{
+    bottom: 49%;
+    opacity: 1;
+
+}
+*/
+
+/*------ carte des carrés ------*/
+
+/*------ Les dernières nouvelles ------*/
+.last-news{
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding-top: 50px;
+}
+
+.last-news-col{
+    flex-basis: 32%;
+    border-radius: 10px;
+    margin-bottom: 5%; 
+    position: relative;
+    overflow: hidden;
+    text-align: left;
+}
+
+.last-news-col img{
+    width: 100%;
+    border-radius: 10px;
+}
+
+.last-news-col p{
+    padding: 0;
+}
+
+.last-news-col h3{
+    margin-top: 16px;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+/*------ FAQ et liens utiles ------*/
+
+.FAQ-Liens-utiles{
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding-top: 100px;
+}
+
+.FAQ-Liens-utiles-col{
+    flex-basis: 31%;
+    background: #CFD8DC;
+    border-radius: 10px;
+    margin-bottom: 5%;
+    padding: 20px 12px;
+    box-sizing: border-box;
+    transition: 0.5s;
+}
+
+.FAQ-Liens-utiles-col ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.FAQ-Liens-utiles-col ul li::before {
+    content: "\2192"; /* Code unicode pour la flèche */
+    padding-right: 5px;
+}
+
+.FAQ-Liens-utiles-col li {
+    margin-bottom: 10px;
+    text-align: left;
+    padding-left: 10%;
+}
+
+.FAQ-Liens-utiles-col a {
+    text-decoration: none;
+}
+
+.FAQ-Liens-utiles-col a:hover {
+    text-decoration: underline;
+}
+
+.FAQ-Liens-utiles-col:hover{
+    box-shadow: 0 0 20px 0px rgba(0,0,0,0.2);
+}
+

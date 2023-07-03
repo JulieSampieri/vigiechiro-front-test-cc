@@ -1,3 +1,4 @@
+<div class="content">
 <div class="panel panel-default">
   <div class="page-header">
     <h3>Liste des données</h3>
@@ -8,11 +9,11 @@
       <div class="col-xs-7">
         <label for="search">Nom du fichier sans extension :</label>
         <input ng-model="titre" class="form-control search-field"
-               placeholder="nom du fichier">
+               placeholder="Ex : Car342009-2023-Pass2-Z2-008558_0_20140805_211338_729">
       </div>
       <div class="col-xs-1"></div>
       <div class="col-xs-4">
-        <label for="search">Nb de Résultats par page :</label>
+        <label for="search">Nombre de résultats par page :</label>
         <input type="number" class="form-control max-results-field" ng-model="lookup.max_results">
       </div>
     </div>
@@ -40,6 +41,26 @@
       </div>
     </div>
     <br>
+    <div class="row">
+      <div class="col-xs-4">
+        <label for="search">Probabilité égale à : </label>
+        <input ng-model="probabilite" class="form-control search-field"
+               placeholder="test"> <!-- En cours d'ecriture (pour l'instant c'est le code du nb par page)-->
+      </div>
+      <div class="col-xs-4">
+        <label for="search">Probabilité supérieure à :</label>
+        <!-- En cours d'ecriture -->
+        <input ng-model="probabilite" class="form-control search-field"
+               placeholder="0">
+      </div>
+      <div class="col-xs-4">
+        <label for="search">Probabilité inférieure à :</label>
+        <!-- En cours d'ecriture -->
+        <input ng-model="probabilite" class="form-control search-field"
+               placeholder="1">
+      </div>
+    </div>
+    <br>
   </div>
 
   <list-resource-directive resource-backend="resourceBackend"
@@ -52,4 +73,5 @@
                               taxons="taxons">
     </display-donnee-directive>
   </list-resource-directive>
+</div>
 </div>

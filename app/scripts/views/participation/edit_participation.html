@@ -1,7 +1,8 @@
-<a class="btn btn-primary" href="#/protocoles/{{protocole._id}}">
+<div class="content">
+<a class="btn btn-default" href="#/protocoles/{{protocole._id}}" target="_blank">
   Voir le protocole {{ protocole.titre }}
 </a>
-<a class="btn btn-primary" href="#/sites/{{site._id}}">
+<a class="btn btn-default" href="#/sites/{{site._id}}" target="_blank">
   Voir le site {{ site.titre }}
 </a>
 
@@ -20,3 +21,4 @@
            wait-for-class="fa fa-spinner fa-spin"
            cancel-wait-for="saveDone">
 </sc-button>
+</div>

@@ -3,10 +3,6 @@
     <div class="g-maps"></div>
   </div>
 
-  <div class="form-group">
-    {{ site.commentaire }}
-  </div>
-
   <div ng-if="site.verrouille">
     <span class="label label-success">
       Site verrouillé
@@ -25,5 +21,11 @@
     <a class="btn btn-primary" ng-click="lockSite(true)" ng-if="isAdmin">
       Verrouiller
     </a>
+  </div>
+  
+  <div class="form-group" ng-if="site.commentaire">
+    <hr>
+    <b>Commentaire :</b> {{ site.commentaire }}
+    <hr>    
   </div>
 </div>

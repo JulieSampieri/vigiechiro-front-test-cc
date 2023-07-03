@@ -1,0 +1,32 @@
+.btn-accueil{
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.policy-style-p p{
+    text-align: left;
+}
+
+.policy-style-p ul{
+    text-align: left;
+}
+
+.policy-style-p h2{
+    text-align: left;
+}
+
+.policy-style-p h4{
+    text-align: left;
+    color: var(--c-primary);
+}
+
+.policy-style-p section{
+    width: 70%;
+    background-color: #CFD8DC;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+}

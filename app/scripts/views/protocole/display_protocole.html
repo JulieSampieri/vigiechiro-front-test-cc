@@ -1,3 +1,4 @@
+<div class="content">
 <div class="container">
   <div class="text-center">
     <div class="page-header text-center">
@@ -34,14 +35,10 @@
       <list-sites-directive protocole-id="{{protocole._id}}">
       </list-sites-directive>
       <hr>
-      <div class="panel panel-default" ng-show="userRegistered">
-        <div class="panel-heading" role="tab" id="headingOne">
-          <h4 class="panel-title">
-            <a href="#/protocoles/{{protocole._id}}/nouveau-site">
-              Nouveau Site
-            </a>
-          </h4>
-        </div>
+      <div ng-show="userRegistered">
+        <a class="btn btn-primary" href="#/protocoles/{{protocole._id}}/nouveau-site">
+          Nouveau Site
+        </a>
       </div>
     </div>
   </div>
@@ -53,4 +50,5 @@
       </list-actualites-validations-directive>
     </div>
   </div>
+</div>
 </div>

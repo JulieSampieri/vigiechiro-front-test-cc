@@ -21,7 +21,7 @@
     }
   };
 
-  angular.module('participationViews', ['ngRoute', 'textAngular', 'xin_listResource', 'xin_backend', 'xin_session', 'xin_tools', 'xin_uploadFile', 'xin.form', 'modalParticipationViews', 'sc-button']).config(function($routeProvider) {
+  angular.module('participationViews', ['ngRoute', 'textAngular', 'xin_listResource', 'xin_backend', 'xin_session', 'xin_tools', 'xin_uploadFile', 'xin.form', 'modalParticipationViews', 'sc-button', 'protocole_map']).config(function($routeProvider) {
     return $routeProvider.when('/participations', {
       templateUrl: 'scripts/views/participation/list_participations.html',
       controller: 'ListParticipationsController',
@@ -188,6 +188,14 @@
       });
     };
     $scope.getEmailDone = {};
+    //ajout de infoUpload pop up on click de "uploader les fichiers"
+    $scope.infoUpload = function() {
+      var modalInstance;
+      modalInstance = $modal.open({
+        templateUrl: 'scripts/views/participation/info_upload.html',
+        controller: 'ModalInstanceControllerInfoUpload'
+      });
+    };
     return $scope.getDonnees = function() {
       return participationResource.post('csv').then(function() {
         var base;
@@ -198,6 +206,11 @@
         $scope.isCsvPost = false;
         return typeof (base = $scope.getEmailDone).end === "function" ? base.end() : void 0;
       });
+    };
+  })
+  .controller('ModalInstanceControllerInfoUpload', function($scope, $modalInstance) {
+    $scope.closeModal = function() {
+      $modalInstance.close();
     };
   }).directive('displayParticipationDirective', function(Backend) {
     return {
@@ -221,7 +234,8 @@
         };
       }
     };
-  }).controller('displayParticipationDrtController', function($scope, Backend) {
+  })
+  .controller('displayParticipationDrtController', function($scope, Backend) {
     $scope.$watch('participation', function(participation) {
       if (participation != null) {
         return Backend.all('participations/' + $scope.participation._id + '/pieces_jointes').getList({
@@ -271,14 +285,17 @@
         };
       }
     };
+
   }).controller('EditParticipationController', function($scope, $route, $routeParams, Backend) {
-    var makeConfiguration, makeMeteo, participationResource, siteResource;
+    var makeConfiguration, makeMeteo, participationResource, siteResource, giteResource; //ajout
     participationResource = null;
     siteResource = null;
+   // giteResource = null; //ajout
     $scope.participation = null;
     $scope.site = null;
     $scope.protocole = null;
     $scope.saveDone = {};
+    //Nouvelle participation
     if ($routeParams.siteId != null) {
       Backend.one('sites', $routeParams.siteId).get().then(function(site) {
         if (breadcrumbsGetParticipationDefer != null) {
@@ -286,6 +303,7 @@
           breadcrumbsGetParticipationDefer = void 0;
         }
         siteResource = site;
+       // giteResource = gite; //ajout
         $scope.site = site.plain();
         $scope.protocole = $scope.site.protocole;
         return $scope.participation = {
@@ -295,6 +313,7 @@
       }, function(error) {
         return window.location = '#/404';
       });
+      //Edition participation #ici il y a peut etre un ajout a faire pour gite
     } else if ($routeParams.participationId != null) {
       Backend.one('participations', $routeParams.participationId).get().then(function(participation) {
         if (breadcrumbsGetParticipationDefer != null) {
@@ -367,10 +386,41 @@
         } else {
           payload.date_fin = date_fin.toGMTString();
         }
+      } else {
+        error = true;
+        $scope.participation._errors.date_fin = "La date de fin est obligatoire. ";
       }
+      
+      
+      //ajout du point en obligatoire
+      if ($scope.participation.point != undefined) {
+        payload.point = $scope.participation.point;
+      } else {
+        error = true;
+        $scope.participation._errors.point = "Le point est obligatoire. ";
+      }
+      
       payload.point = $scope.participation.point || void 0;
       payload.commentaire = $scope.participation.commentaire;
+     // payload.gite = $scope.participation.gite; //ajout
       payload.meteo = $scope.participation.meteo;
+
+      //ajout du detecteur en obligatoire
+      if ($scope.participation.configuration.detecteur_enregistreur_numero_serie != null && $scope.participation.configuration.detecteur_enregistreur_numero_serie !== ""
+      && $scope.participation.configuration.detecteur_enregistreur_type != null && $scope.participation.configuration.detecteur_enregistreur_type !== "") 
+            {
+              payload.configuration = $scope.participation.configuration;
+            } else {
+              error = true;
+              if ($scope.participation.configuration.detecteur_enregistreur_numero_serie == null || $scope.participation.configuration.detecteur_enregistreur_numero_serie == ""){
+                $scope.participation._errors.numDetecteur = "Le numéro de série du détecteur enregistreur est obligatoire. ";
+              } 
+              if ($scope.participation.configuration.detecteur_enregistreur_type == null || $scope.participation.configuration.detecteur_enregistreur_type == "") {
+                $scope.participation._errors.typeDetecteur = "Le type du détecteur enregistreur est obligatoire. ";
+              }
+              
+            }
+
       payload.configuration = $scope.participation.configuration;
       if ((payload.configuration.canal_expansion_temps != null) && payload.configuration.canal_expansion_temps !== '') {
         if (!payload.configuration.canal_enregistrement_direct || payload.configuration.canal_enregistrement_direct === '') {
@@ -383,6 +433,7 @@
           error = true;
         }
       }
+
       if (!error) {
         if ($scope.participation._id != null) {
           return participationResource.patch(payload).then(function(participation) {
